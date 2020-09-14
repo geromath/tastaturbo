@@ -1,0 +1,223 @@
+:root {
+  --rotation: 0;
+}
+
+.spark__animation--1 {
+  animation: anim1 0.8s ease;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--2 {
+  animation: anim2 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--3 {
+  animation: anim3 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--4 {
+  animation: anim4 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--5 {
+  animation: anim5 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--6 {
+  animation: anim6 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--7 {
+  animation: anim7 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--8 {
+  animation: anim8 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--9 {
+  animation: anim9 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+.spark__animation--10 {
+  animation: anim10 0.8s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes anim1 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -50%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: 100%;
+  }
+}
+
+@keyframes anim2 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -50%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: -110%;
+  }
+}
+
+@keyframes anim3 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -80%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: 20%;
+  }
+}
+
+@keyframes anim4 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -100%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: 250%;
+  }
+}
+
+@keyframes anim5 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -105%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: -220%;
+  }
+}
+
+@keyframes anim6 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -80%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: 20%;
+  }
+}
+
+@keyframes anim7 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -140%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: 160%;
+  }
+}
+
+@keyframes anim8 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -140%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: -160%;
+  }
+}
+
+@keyframes anim9 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -115%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: 120%;
+  }
+}
+
+@keyframes anim10 {
+  0% {
+    transform: rotate(var(--rotation)) scale(0.7);
+    top: 0;
+    left: 0;
+  }
+  20% {
+    transform: rotate(var(--rotation)) scale(1.5);
+    top: -125%;
+  }
+  100% {
+    transform: rotate(var(--rotation)) scale(0);
+    top: 150%;
+    left: -120%;
+  }
+}

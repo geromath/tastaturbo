@@ -1,0 +1,248 @@
+:root {
+  --outlineColor: #ee1111;
+}
+
+/* TODO: Låse på store skjermer. */
+
+/* ######## START SCREEN ######## */
+.start-screen-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 60vh auto;
+  grid-gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  grid-template-areas: 'text tastaturbo-start' 'start start';
+  background-color: rgba(117, 189, 120, 0.8);
+  padding: 3rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+
+.text {
+  font-size:1.8rem;
+  font-weight: bold;
+  grid-area: text;
+}
+
+.text h2 {
+  font-size: 1rem;
+}
+
+#introText {
+  line-height: 2.4rem;
+  margin: 0;
+}
+
+.read-again-button {
+  padding-top: 1rem;
+  border: 2px solid transparent;
+  background-color: transparent;
+  width: 10vw;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.read-again-button img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 5px #00000040, -3px -3px 5px #ffffff30;
+}
+
+.start-button {
+  justify-self: center;
+  border: 2px solid #19535f;
+  background-color: #19535f;
+  color: #ffffff;
+  padding: 0.4em 1em;
+  font-size: 2rem !important;
+  grid-area: start;
+  outline: var(--outlineColor);
+  border-radius: 1rem;
+}
+
+.start-button:focus {
+  border: 2px solid var(--outlineColor);
+}
+
+.tastaturbo {
+  justify-self: start;
+  margin-left: 5vw;
+  width: 35vmin;
+  height: 45vmin;
+  position: relative;
+  grid-area: tastaturbo-start;
+}
+
+.shadow {
+  background-color: #19535f;
+  width: 17vw;
+  height: 3vh;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(150%);
+  border-radius: 50%;
+  opacity: 0.5;
+  left: 8vw;
+}
+
+.tastaturbo--intro {
+  transform: rotateZ(20deg);
+}
+
+/* ######## END SCREEN ########*/
+.end-screen {
+  margin: auto;
+  width: 90vw;
+  margin-top: 3vh;
+  left: 0;
+  background-color: rgb(154, 217, 230);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-screen-inner {
+  min-width: 300px;
+  min-height: 400px;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  background-color: rgb(117, 189, 120);
+  display: grid;
+  grid-template-areas:
+    'feedback tastaturbo'
+    'btn btn';
+  grid-template-columns: 1fr 1fr;
+  padding: 3vw;
+  box-sizing: border-box;
+  grid-gap: 1rem;
+  border-radius: 1rem;
+}
+
+.feedback {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: bold;
+  height: auto;
+  align-self: center;
+  text-align: left;
+  grid-area: feedback;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  grid-area: btn;
+}
+
+.tastaturbo--end {
+  height: 40vh;
+  place-self: center;
+  grid-area: tastaturbo;
+}
+
+.fireworks {
+  z-index: 9;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+
+.fireworks__inner {
+  height: 100%;
+  position: relative;
+}
+
+.spark {
+  top: 0;
+  left: 0;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  background-color: #ccaa11;
+  position: absolute;
+}
+
+@media screen and (max-width: 1024px) {
+  .text {
+    font-size:1.6rem;
+    font-weight: bold;
+    grid-area: text;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .start-screen-inner {
+    position: relative;
+    margin: auto;
+    grid-template-areas: 'text text' 'start start';
+    grid-template-rows: auto auto;
+    margin-top: 1rem;
+    padding: 0.5rem;
+  }
+
+  .text {
+    position: relative;
+    font-size: 1rem;
+  }
+
+  .tastaturbo {
+    display: none;
+  }
+
+  .button {
+    grid-column: 1 / 3;
+    margin: auto;
+  }
+
+  .end-screen-inner {
+    grid-template-areas:
+      'feedback feedback'
+      'btn btn';
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .tastaturbo--end {
+    display: none;
+  }
+}
+
+.responsive-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+b {
+  font-weight: bold;
+  font-size: 1.2em;
+}

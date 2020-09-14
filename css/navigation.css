@@ -1,0 +1,91 @@
+/* ######## NAVIGATION ######## */
+nav {
+  position: relative;
+  background-color: rgb(117, 189, 120);
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.link:hover {
+  background-color: rgb(67, 167, 100);
+}
+
+.link img {
+  height: 1.6rem;
+}
+
+.tastaturbo-logo {
+  height: 10vh;
+  cursor: pointer;
+}
+
+.tastaturbo-logo img {
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.logo {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 200px;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.logo img {
+  width: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-areas: 'links statped' 'logo logo';
+  }
+
+  .links {
+    grid-area: links;
+    width: 100%;
+    padding: 0;
+  }
+
+  .link {
+    padding: 0;
+  }
+
+  .tastaturbo-logo {
+    grid-area: logo;
+    margin: auto;
+  }
+
+  .logo {
+    grid-area: statped;
+    width: 75px;
+    padding: 0;
+  }
+
+  .logo img {
+    width: 100%;
+  }
+}

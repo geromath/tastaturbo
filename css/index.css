@@ -1,0 +1,427 @@
+:root {
+  --langSlider: 0;
+  --soundSlider: 0;
+  --signSlider: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(154, 217, 230);
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+/* ######## NAVIGATION ######## */
+.navigation {
+  padding: 1vmin;
+  background-color: rgb(117, 189, 120);
+  position: relative;
+  overflow: hidden;
+  height: 20vh;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.header {
+  margin: auto;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
+}
+
+.links {
+  justify-self: start;
+}
+
+.statped-link,
+.erher-link {
+  text-align: start;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+  max-width: 150px;
+  justify-self: right;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  box-sizing: initial;
+  min-height: 80vh;
+  height: auto;
+
+  max-width: 100%; /* Added for scrollbar... */
+}
+
+.arrow {
+  height: 1.4rem;
+}
+
+.center-vertical {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ######## TASK ######## */
+.title {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  color: transparent;
+  user-select: none;
+}
+
+.task-container {
+  box-sizing: border-box;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 90vw;
+  height: 70vmin;
+  grid-gap: 1rem;
+  padding: 2rem;
+
+  max-width: 100%; /* Added for scrollbar... */
+}
+
+.task {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #18404c;
+  height: 70%;
+  min-height: 15vmin;
+  width: 100%;
+  min-width: 10vmin;
+  border-radius: 1rem;
+  color: white;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+.task__number {
+  border-radius: 0.5rem;
+}
+
+/* ######## SETTINGS ######## */
+.settings {
+  margin: auto;
+  width: 100vmin;
+  max-width: 100%;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+.settings-container {
+  text-align: center;
+  display: flex;
+  align-content: space-between;
+  box-sizing: border-box;
+
+  height: 3rem;
+  overflow: hidden;
+}
+
+.cog {
+  position: relative;
+  border: none;
+  background-color: #18404c;
+  height: 100%;
+  width: 3rem;
+  margin-right: 3px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.cog img {
+  height: 70%;
+  width: auto;
+}
+
+.teacher {
+  margin-right: 2rem;
+  width: fit-content;
+  padding: 0.3rem 0.5rem;
+  background-color: #18404c;
+  color: white;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.settings {
+  position: relative;
+}
+
+.settings-open-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.settings-open {
+  position: absolute;
+  background-color: white;
+  height: 600px;
+  z-index: 99999;
+  width: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #ccaa11;
+}
+
+.settings-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.switch-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  cursor: pointer;
+  position: relative;
+  margin: 1rem 0;
+  font-size: 2rem;
+}
+
+input[type='checkbox'] {
+  position: relative;
+  width: 0;
+}
+
+input[type='checkbox']::before,
+input[type='checkbox']::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background-color: lightgrey;
+  height: 40px;
+  transform: translate(0, -10%);
+}
+
+input[type='checkbox']::before {
+  width: 80px;
+}
+
+input[type='checkbox']::after {
+  width: 40px;
+  background-color: red;
+  transform: translate(-100%, -10%);
+}
+
+input[type='checkbox']:checked::after {
+  background-color: green;
+  transform: translate(0, -10%);
+}
+
+/* SOUND CHECKBOX IS DIFFERENT */
+
+#sound::after {
+  width: 40px;
+  background-color: green;
+  transform: translate(0%, -10%);
+}
+
+#sound:checked::after {
+  background-color: red;
+  transform: translate(-100%, -10%);
+}
+
+.radio-container {
+  position: relative;
+  transform: translate(0, 10%);
+  display: flex;
+  width: 80px;
+  justify-content: space-between;
+}
+
+input[type='radio']:nth-child(1)::after {
+  content: ' ';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background-color: lightgrey;
+}
+
+input[type='radio']:nth-child(1):checked::after {
+  content: ' ';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: green;
+}
+
+input[type='radio']:nth-child(2)::before {
+  content: ' ';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: lightgrey;
+  top: 0;
+  right: 0;
+}
+
+input[type='radio']:nth-child(2):checked::before {
+  content: ' ';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: green;
+}
+
+.settings-closer {
+  font-size: 2rem;
+  width: auto;
+  padding: 1rem;
+  border-radius: 3rem;
+  background-color: #18404c;
+  color: white;
+  font-weight: bold;
+}
+
+/* ######## MEDIA QUERIES ######## */
+@media screen and (max-width: 768px) {
+  .navigation {
+    height: auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'links logo'
+      'header header';
+  }
+
+  .header {
+    position: relative;
+    grid-area: header;
+  }
+
+  .logo {
+    position: relative;
+    grid-area: logo;
+    justify-self: flex-end;
+    width: auto;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .links {
+    position: relative;
+    grid-area: links;
+  }
+
+  .teacher-container {
+    bottom: -1rem;
+  }
+
+  .task-container {
+    height: auto;
+    width: 95vw;
+    padding: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, auto);
+  }
+
+  .task {
+    font-size: 6vw;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .statped-link {
+    font-size: 0.7rem;
+    padding: 0;
+  }
+
+  .logo {
+    width: 50%;
+  }
+
+  .text-button {
+    font-size: 0.9rem;
+  }
+
+  .settings {
+    padding: 0.5rem;
+    width: 95vw;
+    max-width: 95vw;
+  }
+
+  .settings-container {
+    display: flex;
+  }
+
+  .cog {
+    margin: 0;
+  }
+
+  .settings-open {
+    overflow: auto;
+    width: 90vw;
+    height: 90vh;
+  }
+
+  .slider {
+    width: 100%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.focus {
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.focus:focus {
+  border: 2px solid red;
+}

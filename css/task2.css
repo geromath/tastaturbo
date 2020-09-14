@@ -1,0 +1,223 @@
+.task-container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50vh auto;
+}
+
+.task {
+  height: 50vh;
+}
+
+.image-wrapper {
+  position: relative;
+  display: table;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.task__tastaturbo {
+  position: absolute;
+  z-index: 1;
+  left: calc(8% + var(--tastaturboRight) * 70%);
+  top: calc(1% + var(--tastaturboTop) * 43%);
+}
+
+.task__tastaturbo__background {
+  position: relative;
+  top: 0;
+  max-height: 35vh;
+  max-width: 100%;
+  z-index: 0;
+}
+
+.task__input {
+}
+
+.task__field {
+  width: 0;
+  border: none;
+  opacity: 0;
+  background-color: inherit;
+  caret-color: rgba(0, 0, 0, 0);
+}
+
+.task__current {
+  font-family: 'Arial Rounded MT Bold', Arial, Helvetica, sans-serif;
+}
+
+.keyboard {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 21rem;
+  width: 52rem;
+  max-width: 52rem;
+  background-color: lavenderblush;
+  overflow: hidden;
+
+  align-self: center;
+
+  text-align: center;
+}
+
+.keyboard__row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20%;
+  width: 52rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.keyboard__row:nth-child(1) {
+  top: 0;
+}
+.keyboard__row:nth-child(2) {
+  top: 4rem;
+}
+.keyboard__row:nth-child(3) {
+  top: 8rem;
+}
+.keyboard__row:nth-child(4) {
+  top: 12rem;
+}
+.keyboard__row:nth-child(5) {
+  top: 16rem;
+}
+
+.key {
+  position: relative;
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  box-sizing: border-box;
+  height: 3em;
+  width: 3em;
+}
+
+.tactile {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 2px;
+  background-color: white;
+}
+
+.key span {
+  position: absolute;
+}
+
+.normal {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2em;
+}
+
+.d-normal {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2em;
+}
+
+.shifted {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.function {
+  font-size: 0.8rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.key--invisible--3 {
+  display: inline-block;
+  height: 3em;
+  width: 3em;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.key--invisible--2 {
+  display: inline-block;
+  height: 3em;
+  width: 2em;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.tab {
+  width: 4em;
+}
+.caps {
+  width: 5em;
+}
+.backspace {
+  width: 6em;
+}
+.l-shift {
+}
+.r-shift {
+  width: 9.5em;
+}
+.space {
+  width: 28.4em;
+}
+.l-ctrl {
+  width: 4em;
+}
+.windows {
+  width: 4em;
+}
+.alt-gr {
+  width: 4em;
+}
+.r-ctrl {
+  width: 4em;
+}
+
+.enter {
+  position: absolute;
+  top: 23.9%;
+  right: 3.3%;
+  height: 7rem;
+  width: 4.6rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 15% 3rem, 0% 3rem);
+}
+
+.enter-span {
+  top: 10%;
+  left: 10%;
+}
+
+.key--highlight {
+  border: 2px solid lightgreen;
+  animation: key--blink 1s ease-in-out infinite;
+}
+
+@keyframes key--blink {
+  from {
+    border: 2px solid lightgreen;
+  }
+  to {
+    border: 2px solid transparent;
+  }
+}
+
+.hidden {
+  display: none;
+}

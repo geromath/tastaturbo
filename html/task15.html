@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="nb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tastaturbo - Oppgave 1</title>
+    <link rel="stylesheet" href="../css/keyboard.css" />
+    <link rel="stylesheet" href="../css/tasks.css" />
+    <link rel="stylesheet" href="../css/animation.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="links">
+        <a href="../index.html" class="back link"
+          ><img src="../img/baseline_arrow_back_black_48dp.png" alt="Link" />
+          <span>Til startsiden</span></a
+        >
+      </div>
+      <div class="tastaturbo-logo" id="logo">
+        <img src="../img/header.png" alt="" />
+      </div>
+
+      <div class="logo">
+        <img src="../img/Statped sort.svg" alt="Statped logo" />
+      </div>
+    </nav>
+
+    <div class="start-screen">
+      <div class="start-screen-inner">
+        <div class="text">
+          <h2>Tastaturbo sier:</h2>
+          <p id="introText">
+            Hei! Endelig skal jeg få oppfylt drømmen min om å hoppe i
+            fallskjerm. For at jeg skal lande på en trygg måte, trenger jeg
+            hjelp fra deg og tastaturet. Høyre pekefinger må plasseres på j, og
+            venstre pekefinger på f. Kan du kjenne at det er en forhøyning der?
+            Trykk start, så begynner vi. Husk å trykke på bokstavene etter hvert
+            som de dukker opp.
+          </p>
+          <button class="read-again-button" id="readAgain">
+            <img src="../img/replay.png" alt="Spill av fra begynnelsen" />
+          </button>
+          <button class="read-again-button" id="pauseAudio">
+            <img src="../img/" alt="Pause/spill av" />
+          </button>
+        </div>
+
+        <button class="button start-button" id="start" type="button">
+          START
+        </button>
+        <div class="tastaturbo">
+          <img
+            src="../img/tastaturbo-15.png"
+            alt="Bilde av tastaturbo"
+            class="responsive-image tastaturbo--intro"
+          />
+          <span class="shadow"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-container hidden" id="taskContainer">
+      <div class="task">
+        <div class="input-wrapper">
+          <div class="input-background"></div>
+          <input
+            type="text"
+            name="oppgavefelt"
+            class="input-field"
+            id="inputField"
+          />
+          <span id="currentLeft" class="current-left"></span>
+          <span id="currentRight" class="current-right"></span>
+        </div>
+
+        <div class="image-wrapper">
+          <div class="bilder">
+            <img
+              src="../img/tastaturbo-15.png"
+              alt="Tastaturbo skal hoppe i fallskjerm. Han beveger seg fra høyre mot venstre samtidig som han daler ned fra flyet."
+              class="tastaturbo--task"
+            />
+            <img
+              src="../img/tastaturbo-bakgrunn-15.png"
+              alt="Landskapet rundt tastaturbo"
+              class="background"
+            />
+          </div>
+          <div class="timer" aria-hidden="true">
+            <div class="filler"></div>
+          </div>
+        </div>
+      </div>
+      <div class="keyboard-wrapper">
+        <div class="keyboard" aria-hidden="true">
+          <div class="keyboard__row">
+            <div class="key lambda">
+              <span class="d-normal">|</span>
+              <span class="shifted">§</span>
+            </div>
+            <div class="key one">
+              <span class="d-normal">1</span>
+              <span class="shifted">!</span>
+            </div>
+            <div class="key two">
+              <span class="d-normal">2</span>
+              <span class="shifted">"</span>
+            </div>
+            <div class="key three">
+              <span class="d-normal">3</span>
+              <span class="shifted">¤</span>
+            </div>
+            <div class="key four">
+              <span class="d-normal">4</span>
+              <span class="shifted">¤</span>
+            </div>
+            <div class="key five">
+              <span class="d-normal">5</span>
+              <span class="shifted">%</span>
+            </div>
+            <div class="key six">
+              <span class="d-normal">6</span>
+              <span class="shifted">&</span>
+            </div>
+            <div class="key seven">
+              <span class="d-normal">7</span>
+              <span class="shifted">/</span>
+            </div>
+            <div class="key eight">
+              <span class="d-normal">8</span>
+              <span class="shifted">(</span>
+            </div>
+            <div class="key nine">
+              <span class="d-normal">9</span>
+              <span class="shifted">)</span>
+            </div>
+            <div class="key zero">
+              <span class="d-normal">0</span>
+              <span class="shifted">=</span>
+            </div>
+            <div class="key plus">
+              <span class="d-normal">+</span>
+              <span class="shifted">?</span>
+            </div>
+            <div class="key backslash">
+              <span class="d-normal">\</span>
+              <span class="shifted">`</span>
+            </div>
+            <div class="key backspace">
+              <span class="function">&lt;--</span>
+            </div>
+          </div>
+
+          <div class="keyboard__row">
+            <div class="key tab">
+              <span class="function"></span>
+            </div>
+            <div class="key">
+              <span class="normal">Q</span>
+            </div>
+            <div class="key">
+              <span class="normal">W</span>
+            </div>
+            <div class="key">
+              <span class="normal">E</span>
+            </div>
+            <div class="key">
+              <span class="normal">R</span>
+            </div>
+            <div class="key">
+              <span class="normal">T</span>
+            </div>
+            <div class="key">
+              <span class="normal">Y</span>
+            </div>
+            <div class="key">
+              <span class="normal">U</span>
+            </div>
+            <div class="key">
+              <span class="normal">I</span>
+            </div>
+            <div class="key">
+              <span class="normal">O</span>
+            </div>
+            <div class="key">
+              <span class="normal">P</span>
+            </div>
+            <div class="key">
+              <span class="normal">Å</span>
+            </div>
+            <div class="key squared">
+              <span class="d-normal">¨</span>
+              <span class="shifted">^</span>
+            </div>
+            <div class="key--invisible--3"></div>
+            <div class="key--invisible--2"></div>
+          </div>
+
+          <div class="keyboard__row">
+            <div class="key caps">
+              <span class="function"></span>
+            </div>
+            <div class="key a">
+              <span class="normal">A</span>
+            </div>
+            <div class="key s">
+              <span class="normal">S</span>
+            </div>
+            <div class="key d">
+              <span class="normal">D</span>
+            </div>
+            <div class="key f">
+              <span class="normal">F</span>
+              <span class="tactile"></span>
+            </div>
+            <div class="key g">
+              <span class="normal">G</span>
+            </div>
+            <div class="key h">
+              <span class="normal">H</span>
+            </div>
+            <div class="key j">
+              <span class="normal">J</span>
+              <span class="tactile"></span>
+            </div>
+            <div class="key k">
+              <span class="normal">K</span>
+            </div>
+            <div class="key l">
+              <span class="normal">L</span>
+            </div>
+            <div class="key ø">
+              <span class="normal">Ø</span>
+            </div>
+            <div class="key æ">
+              <span class="normal">Æ</span>
+            </div>
+            <div class="key apostrophe">
+              <span class="d-normal">'</span>
+              <span class="shifted">*</span>
+            </div>
+            <div class="key--invisible--2"></div>
+            <div class="key--invisible--2"></div>
+          </div>
+
+          <div class="keyboard__row">
+            <div class="key">
+              <span class="function"></span>
+            </div>
+            <div class="key">
+              <span class="d-normal">&lt;</span>
+              <span class="shifted">&gt;</span>
+            </div>
+            <div class="key z">
+              <span class="normal">Z</span>
+            </div>
+            <div class="key x">
+              <span class="normal">X</span>
+            </div>
+            <div class="key c">
+              <span class="normal">C</span>
+            </div>
+            <div class="key v">
+              <span class="normal">V</span>
+            </div>
+            <div class="key b">
+              <span class="normal">B</span>
+            </div>
+            <div class="key n">
+              <span class="normal">N</span>
+            </div>
+            <div class="key m">
+              <span class="normal">M</span>
+            </div>
+            <div class="key comma">
+              <span class="d-normal">,</span>
+              <span class="shifted">;</span>
+            </div>
+            <div class="key dot">
+              <span class="d-normal">.</span>
+              <span class="shifted">:</span>
+            </div>
+            <div class="key dash">
+              <span class="d-normal">-</span>
+              <span class="shifted">_</span>
+            </div>
+            <div class="key r-shift">
+              <span class="function"></span>
+            </div>
+          </div>
+
+          <div class="keyboard__row">
+            <div class="key l-ctrl">
+              <span class="function"></span>
+            </div>
+            <div class="key windows">
+              <span class="function"></span>
+            </div>
+            <div class="key alt">
+              <span class="function"></span>
+            </div>
+            <div class="key space">
+              <span class="function">Mellomrom</span>
+            </div>
+            <div class="key alt-gr">
+              <span class="function"></span>
+            </div>
+            <div class="key r-ctrl">
+              <span class="function"></span>
+            </div>
+          </div>
+
+          <div class="key enter">
+            <span class="enter-span">&lt;--l</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="end-screen hidden" id="endScreen">
+      <div class="end-screen-inner">
+        <div class="feedback">
+          <h2>Tastaturbo sier:</h2>
+          <p id="feedback"></p>
+        </div>
+        <div class="filler-end"></div>
+        <img
+          src="../img/tastaturbo-15.png"
+          alt="Tastaturbo"
+          class="tastaturbo--end"
+          id="tastaturboEnd"
+        />
+        <div class="button-container">
+          <button class="start-button" id="tryAgain">Prøv igjen</button>
+          <button class="start-button" id="backToTasks">
+            Tilbake til oppgaver
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <audio src="" id="audio"></audio>
+
+    <script type="module" src="../components/task.js"></script>
+  </body>
+</html>
