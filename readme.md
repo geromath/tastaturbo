@@ -1,4 +1,4 @@
-### Tastaturbo ⌨🐱‍👤
+# Tastaturbo ⌨🐱‍👤
 
 Tastaturbo er et prosjekt i samarbeid med synsavdelingen i Bergen.
 
