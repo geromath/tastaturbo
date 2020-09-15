@@ -12,4 +12,4 @@ Filene er strukturert på ganske lik måte som en bruker ville navigert landings
 
 ## Bidragsytere 👥
 
-All kode er foreløpig skrevet av meg, Mathias / geromath, men håper å kunne inkludere fler fra arbeidsplassen i utviklinga.
+All kode er foreløpig skrevet av meg, Mathias / @geromath, men håper å kunne inkludere fler fra arbeidsplassen i utviklinga.
