@@ -1,3 +1,5 @@
+![Tastaturbo logo](/img/Tastaturbo-logotype-croppet.png)
+
 # Tastaturbo ⌨🐱‍👤
 
 Tastaturbo er et prosjekt i samarbeid med synsavdelingen i Bergen.
