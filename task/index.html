@@ -12,10 +12,47 @@
     <link rel="stylesheet" href="css/end-screen.css" />
   </head>
   <body>
-    <nav></nav>
+    <nav>
+      <a href="../" class="link"
+        ><img
+          src="../img/baseline_arrow_back_black_48dp.png"
+          alt="Tilbake"
+          class="link__img"
+        />
+        Til startsiden</a
+      >
+      <img
+        src="../img/Tastaturbo-logotype-croppet.png"
+        alt="Tastaturbo!"
+        class="header"
+      />
+      <img src="../img/Statped sort.svg" alt="Statped logo" class="logo" />
+    </nav>
+
     <section class="start-screen" id="start-screen">
-      <img src="" alt="Tastaturbo figur" id="start-tt-figurine" />
-      <button id="start-button">Start</button>
+      <div class="wrapper">
+        <div class="ss__left-culomn--text" id="left-column-text">
+          <div class="ss__text">
+            <p>Tastaturbo sier:</p>
+            <p class="ss__intro" id="intro-text"></p>
+          </div>
+          <div class="ss__controls">
+            <button class="ss__play-button">Spill av lyd</button>
+          </div>
+        </div>
+        <div class="ss__left-column--video hidden">
+          <video src="">Du må kunne spille av MP4 for å se innholdet</video>
+        </div>
+        <div class="ss__right-column">
+          <img
+            src=""
+            alt="Tastaturbo figur"
+            id="start-tt-figurine"
+            class="ss__figurine"
+          />
+        </div>
+        <button id="start-button" class="ss__start-button">Start</button>
+      </div>
     </section>
 
     <section class="main-screen" id="main-screen">
