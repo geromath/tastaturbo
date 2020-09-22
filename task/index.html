@@ -6,6 +6,40 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tastaturbo - oppgave</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/start-screen.css" />
+    <link rel="stylesheet" href="css/end-screen.css" />
   </head>
-  <body></body>
+  <body>
+    <nav></nav>
+    <section class="start-screen" id="start-screen">
+      <img src="" alt="Tastaturbo figur" id="start-tt-figurine" />
+      <button id="start-button">Start</button>
+    </section>
+
+    <section class="main-screen" id="main-screen">
+      <div class="letter-section">
+        <div class="single-letter"></div>
+        <div class="word">
+          <div class="word__previous-letter"></div>
+          <div class="word__current-letter"></div>
+          <div class="word__next-letter"></div>
+        </div>
+      </div>
+      <div class="illustration-section">
+        <img src="" alt="Tastaturbo figur" id="tt-figurine" />
+        <img src="" alt="Tastaturbo bakgrunn" id="tt-background" />
+        <div class="timer"></div>
+      </div>
+      <div class="keyboard-section">
+        <!-- Implement keyboard -->
+      </div>
+    </section>
+
+    <section class="end-screen hidden" id="end-screen">
+      <img src="" alt="Tastaturbo figur" id="end-tt-figurine" />
+    </section>
+    <script type="module" src="../src/task/task.js"></script>
+  </body>
 </html>

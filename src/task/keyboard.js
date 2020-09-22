@@ -1,13 +1,42 @@
-function inputInRegistry() {}
+import { tasks } from "./content.js";
 
-function checkInput() {}
+const registry = [];
 
-function handleCorrectKeyPress() {}
+function _task() {
+  return window.location.hash;
+}
 
-function handleWrongKeyPress() {}
+function inputInRegister(key) {
+  if (key.length < 2) {
+    return true;
+  }
 
-export default {
-  inputInRegistry,
+  if (registry.includes(key)) {
+    return true;
+  }
+
+  return false;
+}
+
+function checkInput(key) {
+  // Checks if input is correct or not
+}
+
+function handleCorrectKeyPress() {
+  // What to do if the keypress was correct
+
+  // Hvis game er vunnet
+  if (true) {
+    state.hasWon = true;
+  }
+}
+
+function handleWrongKeyPress() {
+  // What to do if the keypress was wrong
+}
+
+export {
+  inputInRegister,
   checkInput,
   handleCorrectKeyPress,
   handleWrongKeyPress,
