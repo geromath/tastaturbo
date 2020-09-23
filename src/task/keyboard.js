@@ -1,4 +1,6 @@
-import { tasks } from "./content.js";
+import { tasks } from './content.js';
+import { state } from './gameState.js';
+import { updateLetterDisplay, updateWordDisplay } from './ui.js';
 
 const registry = [];
 
@@ -12,27 +14,56 @@ function inputInRegister(key) {
   }
 
   if (registry.includes(key)) {
-    return true;
+    // If you pressed control or such...
+    return false;
   }
 
   return false;
 }
 
 function checkInput(key) {
+  console.log(state.currentWordLetter);
+
+  let t = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
+
   // Checks if input is correct or not
+  if (t.length === 1) {
+    if (key === t) {
+      state.currentLetter++;
+      return true;
+    }
+  } else {
+    if (key === t[state.currentWordLetter]) {
+      if (t.length === state.currentWordLetter + 1) {
+        state.currentWordLetter = 0;
+        state.currentLetter++;
+      } else {
+        state.currentWordLetter++;
+      }
+      return true;
+    }
+  }
+  return false;
 }
 
 function handleCorrectKeyPress() {
-  // What to do if the keypress was correct
+  let t = tasks[parseInt(location.hash.slice(1)) - 1].task;
 
-  // Hvis game er vunnet
-  if (true) {
+  if (state.currentLetter === t.length) {
+    console.log('Game won!!');
     state.hasWon = true;
+    return;
+  }
+
+  if (t[state.currentLetter].length > 1) {
+    updateWordDisplay();
+  } else {
+    updateLetterDisplay();
   }
 }
 
 function handleWrongKeyPress() {
-  // What to do if the keypress was wrong
+  // Play wrong sound
 }
 
 export {

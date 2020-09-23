@@ -1,5 +1,7 @@
 :root {
   --timer: 100%;
+
+  --image-height: calc((100vw - 1rem) * (1139 / 4176));
 }
 
 body {
@@ -20,7 +22,7 @@ nav {
     );
   place-items: center;
   background-color: rgb(117, 189, 120);
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   box-sizing: border-box;
 }
 
@@ -37,7 +39,7 @@ nav {
 }
 
 .header {
-  max-height: 100%;
+  max-height: 10vh;
   max-width: 80%;
 }
 
@@ -50,12 +52,47 @@ nav {
   width: 100%;
   height: 90vh;
   max-height: 90%;
+  position: absolute;
+  top: 10%;
+}
+
+.letter-section {
+  width: 100%;
+  height: 10vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.illustration-section {
+  height: var(--image-height);
+  position: relative;
+}
+
+.tt-figurine {
+  position: absolute;
+  width: 15%;
+}
+
+.tt-background {
+  height: var(--image-height);
 }
 
 .timer {
-  width: var(--timer);
-  height: 10px;
-  background-color: red;
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-items: flex-end;
+  top: 0;
+  right: 0;
+  width: 1rem;
+  height: 100%;
+  border: 2px solid #ccaa11;
+  box-sizing: border-box;
+}
+
+.countdown {
+  height: var(--timer);
+  width: 100%;
+  background-color: #ccaa11;
 }
 
 .hidden {

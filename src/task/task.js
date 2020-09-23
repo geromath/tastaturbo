@@ -6,21 +6,24 @@ import {
   checkInput,
   handleCorrectKeyPress,
   handleWrongKeyPress,
-} from "./keyboard.js";
+} from './keyboard.js';
 
-import { checkSoundTimeQueue, playSoundFromTimeQueue } from "./sound.js";
+import { checkSoundTimeQueue, playSoundFromTimeQueue } from './sound.js';
 
-import { initTask, startUITask, updateTimeDisplay, endTask } from "./ui.js";
+import { initTask, startUITask, updateTimeDisplay, endTask } from './ui.js';
 
-import { state } from "./gameState.js";
+import { state } from './gameState.js';
+import { tasks } from './content.js';
 
 function startTask() {
   startUITask();
 
-  //Start the game
-  update();
+  state.isRunning = true; // Start the task countdown
+  state.startState(tasks[parseInt(location.hash.slice(1) - 1)]);
 
-  document.addEventListener("keypress", function (event) {
+  update(); //Start the game
+
+  document.addEventListener('keypress', function (event) {
     inputUpdate(event.key);
   });
 }
@@ -86,5 +89,4 @@ function gameVictory() {
 }
 
 initTask();
-
-document.getElementById("start-button").addEventListener("click", startTask);
+document.getElementById('start-button').addEventListener('click', startTask);

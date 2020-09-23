@@ -1,7 +1,14 @@
 let state = {
-  isRunning: true,
+  isRunning: false,
   hasWon: false,
-  time: 3,
+  startTime: 180,
+  time: 180,
+  startState: function (task) {
+    this.startTime = task.time;
+    this.time = task.time;
+  },
+  currentLetter: 0,
+  currentWordLetter: 0,
 };
 
 export { state };
