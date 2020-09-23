@@ -60,6 +60,18 @@ const leftKeys = [
   '4',
   '5',
 ];
+
+const hand = {
+  leftPinky: ['q', 'a', 'z', '1'],
+  leftRing: ['w', 's', 'x', '2'],
+  leftLong: ['e', 'd', 'c', '3'],
+  leftPoint: ['r', 't', 'f', 'g', 'v', 'b', '4', '5'],
+
+  rightPoint: ['y', 'u', 'h', 'j', 'n', 'm', '6', '7'],
+  rightLong: ['8', 'i', 'k'],
+  rightRing: ['9', 'o', 'l'],
+  rightPinky: ['0', 'p', 'ø', 'å', 'æ'],
+};
 function startUITask() {
   // Hiding the start page
   document.getElementById('start-screen').classList.add('hidden');
@@ -79,6 +91,8 @@ function startUITask() {
       t.length
     );
   }
+
+  currentKeyHighlight();
 }
 
 function updateLetterDisplay() {
@@ -124,6 +138,49 @@ function cleanSlate() {
   document.getElementById('left-letter').innerHTML = '';
 }
 
+let highlighted;
+function currentKeyHighlight() {
+  if (highlighted) {
+    highlighted.classList.remove('keyboard-blink');
+  }
+
+  let current =
+    tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
+  if (current.length === 1) {
+    highlighted = document.querySelector('.' + current);
+    setHighlightColor(current);
+  } else {
+    highlighted = document.querySelector(
+      '.' + current[state.currentWordLetter]
+    );
+    setHighlightColor(current[state.currentWordLetter]);
+  }
+  highlighted.classList.add('keyboard-blink');
+}
+
+function setHighlightColor(key) {
+  let color = '#ffffff';
+  if (hand.leftPinky.includes(key)) {
+    color = '#0000ff';
+  } else if (hand.leftRing.includes(key)) {
+    color = '#ff0000';
+  } else if (hand.leftLong.includes(key)) {
+    color = '#ffff00';
+  } else if (hand.leftPoint.includes(key)) {
+    color = '#00ff00';
+  } else if (hand.rightPoint.includes(key)) {
+    color = '#00ff00';
+  } else if (hand.rightLong.includes(key)) {
+    color = '#ffff00';
+  } else if (hand.rightRing.includes(key)) {
+    color = '#ff0000';
+  } else if (hand.rightPinky.includes(key)) {
+    color = '#0000ff';
+  }
+
+  document.documentElement.style.setProperty('--highlight-color', color);
+}
+
 function updateTimeDisplay() {
   document.documentElement.style.setProperty(
     '--timer',
@@ -143,4 +200,5 @@ export {
   endTask,
   updateWordDisplay,
   updateLetterDisplay,
+  currentKeyHighlight,
 };

@@ -1,5 +1,6 @@
 :root {
   --filler: 0;
+  --highlight-color: #fff;
 }
 
 .keyboard-wrapper {
@@ -170,13 +171,13 @@
   left: 10%;
 }
 
-.key--highlight {
+.keyboard-blink {
   animation: key--blink 1s ease-in-out infinite;
 }
 
 @keyframes key--blink {
   from {
-    background-color: var(--highlightColor);
+    background-color: var(--highlight-color);
   }
   to {
   }

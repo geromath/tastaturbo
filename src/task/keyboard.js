@@ -1,6 +1,10 @@
 import { tasks } from './content.js';
 import { state } from './gameState.js';
-import { updateLetterDisplay, updateWordDisplay } from './ui.js';
+import {
+  currentKeyHighlight,
+  updateLetterDisplay,
+  updateWordDisplay,
+} from './ui.js';
 
 const registry = [];
 
@@ -22,8 +26,6 @@ function inputInRegister(key) {
 }
 
 function checkInput(key) {
-  console.log(state.currentWordLetter);
-
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
 
   // Checks if input is correct or not
@@ -54,6 +56,8 @@ function handleCorrectKeyPress() {
     state.hasWon = true;
     return;
   }
+
+  currentKeyHighlight();
 
   if (t[state.currentLetter].length > 1) {
     updateWordDisplay();
