@@ -36,17 +36,28 @@
 
     <section class="start-screen" id="start-screen">
       <div class="wrapper">
-        <div class="ss__left-culomn--text" id="left-column-text">
-          <div class="ss__text">
-            <p>Tastaturbo sier:</p>
-            <p class="ss__intro" id="intro-text"></p>
+        <div class="ss_left-column">
+          <div class="ss__left-column--text" id="blind-left-column">
+            <div class="ss__text">
+              <p>Tastaturbo sier:</p>
+              <p class="ss__intro" id="intro-text-blind"></p>
+            </div>
+            <div class="ss__controls">
+              <button class="ss__play-button">Spill av lyd</button>
+            </div>
           </div>
-          <div class="ss__controls">
-            <button class="ss__play-button">Spill av lyd</button>
+
+          <div class="ss__left-column--sign" id="sign-left-column">
+            <div class="ss__left-column--video">
+              <video src="" class="ss__video" id="ss-video" controls>
+                Du må kunne spille av MP4 for å se innholdet
+              </video>
+            </div>
+            <p class="ss__intro" id="intro-text-sign"></p>
+            <div class="ss__controls">
+              <button class="ss__play-button">Spill av lyd</button>
+            </div>
           </div>
-        </div>
-        <div class="ss__left-column--video hidden">
-          <video src="">Du må kunne spille av MP4 for å se innholdet</video>
         </div>
         <div class="ss__right-column">
           <img

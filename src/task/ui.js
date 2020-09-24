@@ -1,8 +1,6 @@
 import { state } from './gameState.js';
 import { tasks } from './content.js';
 
-const language = 'nb'; // TODO: Change this to refer to the settings...
-
 const imgSource = '../img/';
 let taskNumber = parseInt(location.hash.slice(1));
 
@@ -14,17 +12,24 @@ if (taskNumber < 10) {
 
 function initTask(sign) {
   if (sign) {
-    // Vis tegnspråkversjonen
+    document.getElementById('sign-left-column').classList.remove('hidden');
+    document.getElementById('blind-left-column').classList.add('hidden');
+
+    document.getElementById('ss-video').src =
+      'vid/tastaturbo-' + taskNumber + '.mp4';
   } else {
-    // Vis blinde-versjonen
+    document.getElementById('sign-left-column').classList.add('hidden');
+    document.getElementById('blind-left-column').classList.remove('hidden');
   }
   document.getElementById('start-tt-figurine').src =
     imgSource + 'tastaturbo-' + taskNumber + '-figuren.png';
 
-  if (language === 'nb') {
-    document.getElementById('intro-text').innerHTML = task.introNb;
+  if (state.langValue === 'Nb') {
+    document.getElementById('intro-text-blind').innerHTML = task.introNb;
+    document.getElementById('intro-text-sign').innerHTML = task.introNb;
   } else {
-    document.getElementById('intro-text').innerHTML = task.introNn;
+    document.getElementById('intro-text-blind').innerHTML = task.introNn;
+    document.getElementById('intro-text-sign').innerHTML = task.introNn;
   }
 
   document.getElementById('tt-figurine').src =

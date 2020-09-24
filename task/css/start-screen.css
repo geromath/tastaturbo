@@ -29,10 +29,21 @@
 .ss__left-column--video {
 }
 
+.ss__video {
+  border-radius: 1rem;
+  width: 100%;
+}
+
 .ss__start-button {
   grid-column: span 2;
 }
 
+.ss__right-column {
+  display: grid;
+  place-items: center;
+}
+
 .ss__figurine {
-  width: 200px;
+  width: 80%;
+  margin: auto;
 }

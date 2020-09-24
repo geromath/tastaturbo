@@ -88,5 +88,7 @@ function gameVictory() {
   return state.hasWon;
 }
 
-initTask();
+initTask(state.signValue);
 document.getElementById('start-button').addEventListener('click', startTask);
+
+console.log(state.signValue);
