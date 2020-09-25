@@ -90,5 +90,4 @@ function gameVictory() {
 
 initTask(state.signValue);
 document.getElementById('start-button').addEventListener('click', startTask);
-
-console.log(state.signValue);
+document.getElementById('start-button').focus();
