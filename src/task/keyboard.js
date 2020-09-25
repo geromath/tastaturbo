@@ -5,6 +5,7 @@ import {
   updateLetterDisplay,
   updateWordDisplay,
 } from './ui.js';
+import { addSoundToQueue, playSoundInstantly } from './sound.js';
 
 const registry = [];
 
@@ -23,6 +24,19 @@ function inputInRegister(key) {
   }
 
   return false;
+}
+
+function timeSinceLastLetterSound() {
+  let t = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
+
+  if (state.lastLetterSoundPLayedAt - state.time > 3) {
+    if (t.length > 1) {
+      addSoundToQueue(t[state.currentWordLetter]);
+    } else {
+      addSoundToQueue(t);
+    }
+    state.lastLetterSoundPLayedAt = state.time;
+  }
 }
 
 function checkInput(key) {
@@ -50,6 +64,7 @@ function checkInput(key) {
 
 function handleCorrectKeyPress() {
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task;
+  state.lastLetterSoundPLayedAt = state.time;
 
   if (state.currentLetter === t.length) {
     console.log('Game won!!');
@@ -61,13 +76,22 @@ function handleCorrectKeyPress() {
 
   if (t[state.currentLetter].length > 1) {
     updateWordDisplay();
+    if (state.soundValue) {
+      playSoundInstantly(t[state.currentLetter[currentWordLetter]]);
+    }
   } else {
     updateLetterDisplay();
+    if (state.soundValue) {
+      playSoundInstantly(t[state.currentLetter]);
+    }
   }
 }
 
 function handleWrongKeyPress() {
   // Play wrong sound
+  if (state.soundValue) {
+    playSoundInstantly('feil');
+  }
 }
 
 export {
@@ -75,4 +99,5 @@ export {
   checkInput,
   handleCorrectKeyPress,
   handleWrongKeyPress,
+  timeSinceLastLetterSound,
 };

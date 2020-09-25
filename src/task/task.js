@@ -6,14 +6,29 @@ import {
   checkInput,
   handleCorrectKeyPress,
   handleWrongKeyPress,
+  timeSinceLastLetterSound,
 } from './keyboard.js';
 
-import { checkSoundTimeQueue, playSoundFromTimeQueue } from './sound.js';
+import {
+  checkSoundTimeQueue,
+  playSoundFromTimeQueue,
+  addSoundToQueue,
+} from './sound.js';
 
 import { initTask, startUITask, updateTimeDisplay, endTask } from './ui.js';
 
 import { state } from './gameState.js';
 import { tasks } from './content.js';
+
+function init() {
+  initTask(state.signValue);
+
+  if (tasks[parseInt(location.hash.slice(1) - 1)].task[0].length > 1) {
+    addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0][0]);
+  } else {
+    addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0]);
+  }
+}
 
 function startTask() {
   startUITask();
@@ -33,9 +48,16 @@ function update() {
   _countdownTime(); // Updates the time (counting down)
   updateTimeDisplay(); // Updates UI
 
-  while (checkSoundTimeQueue()) {
-    // Checks if sounds should be played
-    playSoundFromTimeQueue();
+  if (state.soundValue) {
+    if (checkSoundTimeQueue()) {
+      playSoundFromTimeQueue();
+    }
+
+    timeSinceLastLetterSound();
+
+    if (state.time % (state.startTime / 4) === 0) {
+      addSoundToQueue('beep');
+    }
   }
 
   if (state.time > 0 && gameIsRunning()) {
@@ -50,6 +72,19 @@ function inputUpdate(key) {
     if (checkInput(key)) {
       // Checks if input is a correct input or not
       handleCorrectKeyPress();
+      if (state.currentLetter === 10) {
+        addSoundToQueue('Nå er vi i gang'); // Igang
+      } else if (
+        state.currentLetter ===
+        tasks[parseInt(location.hash.slice(1) - 1)].task.length / 2
+      ) {
+        addSoundToQueue('Nå er vi halvveis'); // Halvveis
+      } else if (
+        state.currentLetter ===
+        tasks[parseInt(location.hash.slice(1) - 1)].task.length - 10
+      ) {
+        addSoundToQueue('Vi klarer det snart'); // Snart i mål
+      }
     } else {
       handleWrongKeyPress();
     }
@@ -88,6 +123,7 @@ function gameVictory() {
   return state.hasWon;
 }
 
-initTask(state.signValue);
+init();
+
 document.getElementById('start-button').addEventListener('click', startTask);
 document.getElementById('start-button').focus();

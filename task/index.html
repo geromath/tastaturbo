@@ -43,19 +43,33 @@
               <p class="ss__intro" id="intro-text-blind"></p>
             </div>
             <div class="ss__controls">
-              <button class="ss__play-button">Spill av lyd</button>
+              <button class="ss__play-button">
+                <img
+                  src="../img/Knapp-spill.png"
+                  alt="Spill av teksten"
+                  class="ss__play-button__img shadow"
+                  id="ss-play-button-1"
+                />
+              </button>
             </div>
           </div>
 
           <div class="ss__left-column--sign" id="sign-left-column">
             <div class="ss__left-column--video">
-              <video src="" class="ss__video" id="ss-video" controls>
+              <video src="" class="ss__video shadow" id="ss-video" controls>
                 Du må kunne spille av MP4 for å se innholdet
               </video>
             </div>
-            <p class="ss__intro" id="intro-text-sign"></p>
+            <p class="ss__intro--sign" id="intro-text-sign"></p>
             <div class="ss__controls">
-              <button class="ss__play-button">Spill av lyd</button>
+              <button class="ss__play-button shadow">
+                <img
+                  src="../img/Knapp-spill.png"
+                  alt="Spill av teksten"
+                  class="ss__play-button__img"
+                  id="ss-play-button-2"
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -67,7 +81,7 @@
             class="ss__figurine"
           />
         </div>
-        <button id="start-button" class="ss__start-button">Start</button>
+        <button id="start-button" class="ss__start-button shadow">Start</button>
       </div>
     </section>
 
@@ -98,6 +112,10 @@
         />
         <div class="timer"><div class="countdown"></div></div>
       </div>
+
+      <audio id="time-audio" src=""></audio>
+      <audio id="instant-audio" src=""></audio>
+
       <div class="keyboard-section">
         <div class="keyboard-wrapper">
           <div class="keyboard" aria-hidden="true">

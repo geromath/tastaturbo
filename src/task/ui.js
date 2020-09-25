@@ -198,6 +198,27 @@ function endTask() {
   document.getElementById('main-screen').classList.add('hidden');
 }
 
+document
+  .getElementById('ss-play-button-1')
+  .addEventListener('click', function (e) {
+    changeButtonSymbol(e);
+  });
+
+document
+  .getElementById('ss-play-button-2')
+  .addEventListener('click', function (e) {
+    changeButtonSymbol(e);
+  });
+
+function changeButtonSymbol(e) {
+  // TODO: Add logic for when it's supposed to be what...
+  if (true) {
+    e.target.src = '../img/Knapper-stopp.png';
+  } else {
+    e.target.src = '../img/Knapp-spill.png';
+  }
+}
+
 export {
   initTask,
   updateTimeDisplay,

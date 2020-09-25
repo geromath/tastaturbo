@@ -6,6 +6,10 @@
   background-color: rgb(154, 217, 230);
 }
 
+p {
+  line-height: 1.5rem;
+}
+
 .wrapper {
   position: relative;
   width: 90%;
@@ -29,6 +33,21 @@
 .ss__left-column--video {
 }
 
+.ss__intro {
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 2.4rem;
+  letter-spacing: 0.2px;
+}
+
+.ss__intro--sign {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 2rem;
+  letter-spacing: 0.2px;
+  padding-left: 0.5rem;
+}
+
 .ss__video {
   border-radius: 1rem;
   width: 100%;
@@ -36,6 +55,32 @@
 
 .ss__start-button {
   grid-column: span 2;
+  padding: 0.5em 1em;
+  font-size: 2rem;
+  border-radius: 1rem;
+  border: #19535f;
+  background-color: #19535f;
+  color: white;
+}
+
+.ss__play-button {
+  padding: 0;
+  margin: 0;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid white;
+  background-color: transparent;
+  position: relative;
+}
+
+.ss__play-button__img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .ss__right-column {
@@ -46,4 +91,8 @@
 .ss__figurine {
   width: 80%;
   margin: auto;
+}
+
+.shadow {
+  box-shadow: 3px 3px 5px #00000050, -3px -3px 5px #ffffff40;
 }
