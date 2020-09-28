@@ -69,7 +69,6 @@ function handleCorrectKeyPress() {
   state.lastLetterSoundPLayedAt = state.time;
 
   if (state.currentLetter === t.length) {
-    console.log('Game won!!');
     state.hasWon = true;
     return;
   }

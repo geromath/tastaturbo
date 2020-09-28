@@ -104,8 +104,8 @@ function inputUpdate(key) {
   }
 
   if (gameVictory()) {
-    // Do something to celebrate the victory
-    endTask();
+    // TODO: Do something to celebrate the victory
+    endTask(true);
   }
 }
 
@@ -129,7 +129,7 @@ function _gameOver() {
   // If time hits 0, game is over and the user lost (most likely)
   // Needs to do the game lost stiff (UI Stuff most likely)
   setGameState(false);
-  endTask();
+  endTask(false);
 }
 
 function gameVictory() {

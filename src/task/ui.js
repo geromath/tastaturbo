@@ -213,9 +213,54 @@ function updateTimeDisplay() {
   );
 }
 
-function endTask() {
+function endTask(victory) {
   document.getElementById('end-screen').classList.remove('hidden');
   document.getElementById('main-screen').classList.add('hidden');
+
+  let t = tasks[parseInt(location.hash.slice(1)) - 1];
+
+  document.getElementById('es-text').innerHTML = t.successNb;
+
+  if (state.langValue === 'Nb') {
+    if (victory) {
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Neste oppgave';
+    } else {
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Prøv igjen';
+    }
+  } else {
+    if (victory) {
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Neste oppgåve';
+    } else {
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Prøv igjen';
+    }
+  }
+  if (victory) {
+    document
+      .getElementById('left-button')
+      .addEventListener('click', function () {
+        location = '../';
+      });
+    document
+      .getElementById('right-button')
+      .addEventListener('click', function () {
+        location = '../task#' + (state.lection + 2);
+      });
+  } else {
+    document
+      .getElementById('left-button')
+      .addEventListener('click', function () {
+        location = '../';
+      });
+    document
+      .getElementById('right-button')
+      .addEventListener('click', function () {
+        location.reload();
+      });
+  }
 }
 
 document

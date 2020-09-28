@@ -30,6 +30,22 @@ let å = 'å';
 
 const tasks = [
   {
+    time: 3,
+    introNb: '',
+    introNn: '',
+    successNb: '',
+    successNn: '',
+    failureNb: '',
+    failureNn: '',
+    task: [f],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
+  },
+  {
     time: 180,
     introNb:
       'Hei! Endelig skal jeg få oppfylt drømmen min om å hoppe i fallskjerm. For at jeg skal lande, trenger jeg hjelp fra deg og tastaturet. Du skal legge venstre pekefinger på f. Du skal legge høyre pekefinger på j. Kan du kjenne at tastene har et merke? Trykk start, så begynner vi.',
@@ -1442,7 +1458,7 @@ const tasks = [
   {
     time: 180,
     introNb:
-      'Mmmm, jeg elsker eplekake. Tastaturid har lovet å bake eplekake. Jeg må plukke hele kurven full for å ha nok epler til en kake. Men jeg trenger din hjelp. De nye bokstavene er e og i.  Legg fingrene på ledetastene. Du må flytte venstre langfinger opp til e. Du må flytte høyre langfinger opp til i. Kom igjen, så setter vi i gang!',
+      'Mmmm, jeg elsker eplekake. Tastaturid har lovet å bake eplekake. Jeg må plukke hele kurven full for å ha nok epler til en kake. Men jeg trenger din hjelp. De nye bokstavene er e og i.  Legg fingrene på ledetastene. Du må flytte venstre langfinger opp til "E". Du må flytte høyre langfinger opp til "I". Kom igjen, så setter vi i gang!',
     introNn:
       'Mmmm, eg elskar eplekake. Tastaturid har lova å bake eplekake. Eg må plukke heile korga full for å ha nok eple til ei kake. Men eg treng di hjelp. Dei nye bokstavane er e og i.  Legg fingrane på leietastane. Du må flytte venstre langfinger opp til e. Du må flytte høgre langfinger opp til i. Kom igjen, så set vi i gong! ',
     successNb: 'Å, nå gleder jeg meg til å spise eplekake!',

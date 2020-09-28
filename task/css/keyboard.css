@@ -31,6 +31,8 @@
   align-self: center;
 
   text-align: center;
+
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .keyboard__row {
