@@ -30,9 +30,27 @@ function playSoundFromTimeQueue() {
   }
 }
 
+function playIntroSound() {
+  if (state.langValue == 'Nb') {
+    instantAudioElement.src =
+      '../sound/L' + (state.lection + 1) + '_tt1_bm1.mp3';
+  } else {
+    instantAudioElement.src =
+      '../sound/L' + (state.lection + 1) + '_tt1_nn1.mp3';
+  }
+  instantAudioElement.play();
+}
+
+function playOutroSound() {
+  instantAudioElement.src = '';
+  instantAudioElement.play();
+}
+
 export {
   checkSoundTimeQueue,
   playSoundFromTimeQueue,
   addSoundToQueue,
   playSoundInstantly,
+  playIntroSound,
+  playOutroSound,
 };

@@ -4,8 +4,10 @@ import {
   currentKeyHighlight,
   updateLetterDisplay,
   updateWordDisplay,
+  blinkCurrentKey,
 } from './ui.js';
 import { addSoundToQueue, playSoundInstantly } from './sound.js';
+import { progressAnimation } from './animation.js';
 
 const registry = [];
 
@@ -73,6 +75,8 @@ function handleCorrectKeyPress() {
   }
 
   currentKeyHighlight();
+  blinkCurrentKey();
+  progressAnimation();
 
   if (t[state.currentLetter].length > 1) {
     updateWordDisplay();

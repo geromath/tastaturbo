@@ -25,6 +25,8 @@ let state = {
   currentWordLetter: 0,
 
   soundTimeQueue: [],
+
+  lection: parseInt(location.hash.slice(1)) - 1,
 };
 
 export { state };

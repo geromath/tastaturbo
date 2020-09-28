@@ -163,6 +163,26 @@ function currentKeyHighlight() {
   highlighted.classList.add('keyboard-blink');
 }
 
+function blinkCurrentKey() {
+  let current =
+    tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
+  if (current.length === 1) {
+    if (leftKeys.includes(current)) {
+      document.getElementById('left-letter').classList.add('letter-blink');
+      setTimeout(function () {
+        document.getElementById('left-letter').classList.remove('letter-blink');
+      }, 400);
+    } else {
+      document.getElementById('right-letter').classList.add('letter-blink');
+      setTimeout(function () {
+        document
+          .getElementById('right-letter')
+          .classList.remove('letter-blink');
+      }, 400);
+    }
+  }
+}
+
 function setHighlightColor(key) {
   let color = '#ffffff';
   if (hand.leftPinky.includes(key)) {
@@ -227,4 +247,5 @@ export {
   updateWordDisplay,
   updateLetterDisplay,
   currentKeyHighlight,
+  blinkCurrentKey,
 };

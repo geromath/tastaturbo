@@ -13,6 +13,8 @@ import {
   checkSoundTimeQueue,
   playSoundFromTimeQueue,
   addSoundToQueue,
+  playIntroSound,
+  playOutroSound,
 } from './sound.js';
 
 import { initTask, startUITask, updateTimeDisplay, endTask } from './ui.js';
@@ -20,17 +22,28 @@ import { initTask, startUITask, updateTimeDisplay, endTask } from './ui.js';
 import { state } from './gameState.js';
 import { tasks } from './content.js';
 
+import { initAnimation } from './animation.js';
+
 function init() {
   initTask(state.signValue);
+  initAnimation();
 
   if (tasks[parseInt(location.hash.slice(1) - 1)].task[0].length > 1) {
     addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0][0]);
   } else {
     addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0]);
   }
+
+  if (state.soundValue) {
+    playIntroSound();
+  }
 }
 
 function startTask() {
+  if (!document.getElementById('instant-audio').paused) {
+    document.getElementById('instant-audio').pause();
+  }
+
   startUITask();
 
   state.isRunning = true; // Start the task countdown

@@ -13,12 +13,12 @@ p {
 .wrapper {
   position: relative;
   width: 90%;
-  height: 90%;
   background-color: rgba(117, 189, 120, 0.8);
   margin: auto;
   margin-top: 2rem;
   border-radius: 1rem;
   padding: 1rem;
+  margin-bottom: 1rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr;

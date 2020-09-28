@@ -2,6 +2,9 @@
   --timer: 100%;
 
   --image-height: calc((100vw - 1rem) * (1139 / 4176));
+
+  --currentX: 0;
+  --currentY: 0;
 }
 
 body {
@@ -71,6 +74,44 @@ a {
   width: 100%;
   height: 10vh;
   background-color: rgba(0, 0, 0, 0.2);
+  font-size: 4rem;
+  font-weight: bold;
+  line-height: 10vh;
+}
+
+.single-letter {
+  margin: auto;
+  width: 70vw;
+  position: relative;
+  color: #18404c;
+}
+
+.left-letter {
+  position: absolute;
+  left: 0;
+}
+
+.right-letter {
+  position: absolute;
+  right: 0;
+}
+
+.word {
+  width: 100%;
+  display: flex;
+  place-content: center;
+}
+
+.word__previous-letter {
+  color: white;
+}
+
+.word__current-letter {
+  color: #18404c;
+}
+
+.word__next-letter {
+  color: white;
 }
 
 .illustration-section {
@@ -81,6 +122,8 @@ a {
 .tt-figurine {
   position: absolute;
   width: 15%;
+  left: var(--currentX);
+  top: var(--currentY);
 }
 
 .tt-background {
@@ -98,6 +141,25 @@ a {
   height: 100%;
   border: 2px solid #ccaa11;
   box-sizing: border-box;
+}
+
+.letter-blink {
+  animation: blink 1s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .countdown {

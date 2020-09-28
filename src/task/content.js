@@ -42,6 +42,7 @@ const tasks = [
     failureNb: 'Dette skal vi klare. Prøv en gang til.',
     failureNn: 'Dette skal vi klare. Prøv ein gong til.',
     task: [
+      'test',
       f,
       f,
       f,
@@ -211,6 +212,12 @@ const tasks = [
       j,
       j,
       f,
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -386,6 +393,12 @@ const tasks = [
       f,
       j,
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
@@ -541,6 +554,12 @@ const tasks = [
       s,
       s,
       s,
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -715,6 +734,12 @@ const tasks = [
       a,
       'ja',
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
@@ -830,6 +855,12 @@ const tasks = [
       g,
       a,
       'gal',
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -969,6 +1000,12 @@ const tasks = [
       t,
       'søt',
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
@@ -1098,6 +1135,12 @@ const tasks = [
       a,
       k,
       'bak',
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -1229,6 +1272,12 @@ const tasks = [
       'hud',
       'bra',
       'rar',
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -1383,11 +1432,17 @@ const tasks = [
       n,
       'dun',
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
     introNb:
-      'Mmmm, jeg elsker eplekake. Tastaturid har lovet å bake eplekake. Jeg må plukke hele kurven full for å ha nok epler til en kake. Men jeg trenger din hjelp. De nye bokstavene er e og i.  Legg fingrene på ledetastene. Du må flytte venstre langfinger opp til e. Du må flytte venstre langfinger opp til i. Kom igjen, så setter vi i gang!',
+      'Mmmm, jeg elsker eplekake. Tastaturid har lovet å bake eplekake. Jeg må plukke hele kurven full for å ha nok epler til en kake. Men jeg trenger din hjelp. De nye bokstavene er e og i.  Legg fingrene på ledetastene. Du må flytte venstre langfinger opp til e. Du må flytte høyre langfinger opp til i. Kom igjen, så setter vi i gang!',
     introNn:
       'Mmmm, eg elskar eplekake. Tastaturid har lova å bake eplekake. Eg må plukke heile korga full for å ha nok eple til ei kake. Men eg treng di hjelp. Dei nye bokstavane er e og i.  Legg fingrane på leietastane. Du må flytte venstre langfinger opp til e. Du må flytte høgre langfinger opp til i. Kom igjen, så set vi i gong! ',
     successNb: 'Å, nå gleder jeg meg til å spise eplekake!',
@@ -1548,6 +1603,12 @@ const tasks = [
       l,
       'sel',
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
@@ -1688,6 +1749,12 @@ const tasks = [
       e,
       v,
       e,
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -1846,6 +1913,12 @@ const tasks = [
       o,
       o,
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
@@ -1986,6 +2059,12 @@ const tasks = [
       t,
       e,
       'møte',
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -2137,6 +2216,12 @@ const tasks = [
       u,
       s,
       'pus',
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -2298,6 +2383,12 @@ const tasks = [
       'nål',
       'mål',
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
@@ -2350,6 +2441,12 @@ const tasks = [
       'dette',
       'går',
       'at',
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
   {
@@ -2413,6 +2510,12 @@ const tasks = [
       20,
       17,
     ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
+    ],
   },
   {
     time: 180,
@@ -2469,6 +2572,12 @@ const tasks = [
       'plus',
       'plus',
       'exclamation',
+    ],
+    startPosition: [0, -25],
+    animation: [
+      [70, 40],
+      [0, 0],
+      [70, 40],
     ],
   },
 ];
