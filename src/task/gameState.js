@@ -10,16 +10,16 @@ let state = {
     this.lastLetterSoundPLayedAt = task.time;
   },
   signValue: (function () {
-    return localStorage.getItem('--signSlider') === '1';
+    return localStorage.getItem("--signSlider") === "1";
   })(),
   soundValue: (function () {
-    return localStorage.getItem('--soundSlider') === '0';
+    return localStorage.getItem("--soundSlider") === "0";
   })(),
   langValue: (function () {
-    if (localStorage.getItem('--langSlider') === '1') {
-      return 'Nb';
+    if (localStorage.getItem("--langSlider") === "1") {
+      return "Nb";
     }
-    return 'Nn';
+    return "Nn";
   })(),
   currentLetter: 0,
   currentWordLetter: 0,
@@ -27,6 +27,7 @@ let state = {
   soundTimeQueue: [],
 
   lection: parseInt(location.hash.slice(1)) - 1,
+  introPlaying: false,
 };
 
 export { state };

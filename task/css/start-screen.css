@@ -90,6 +90,7 @@ p {
 
 .ss__figurine {
   width: 80%;
+  max-width: 50vmin;
   margin: auto;
 }
 

@@ -1,13 +1,13 @@
-import { tasks } from './content.js';
-import { state } from './gameState.js';
+import { tasks } from "./content.js";
+import { state } from "./gameState.js";
 import {
   currentKeyHighlight,
   updateLetterDisplay,
   updateWordDisplay,
   blinkCurrentKey,
-} from './ui.js';
-import { addSoundToQueue, playSoundInstantly } from './sound.js';
-import { progressAnimation } from './animation.js';
+} from "./ui.js";
+import { addSoundToQueue, playSoundInstantly } from "./sound.js";
+import { progressAnimation } from "./animation.js";
 
 const registry = [];
 
@@ -93,7 +93,7 @@ function handleCorrectKeyPress() {
 function handleWrongKeyPress() {
   // Play wrong sound
   if (state.soundValue) {
-    playSoundInstantly('feil');
+    playSoundInstantly("feil");
   }
 }
 
