@@ -51,6 +51,7 @@ function checkInput(key) {
       return true;
     }
   } else {
+    // Check if the word is comma, dash or something similar
     if (key === t[state.currentWordLetter]) {
       if (t.length === state.currentWordLetter + 1) {
         state.currentWordLetter = 0;

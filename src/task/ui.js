@@ -91,6 +91,7 @@ function startUITask() {
       document.getElementById("right-letter").innerHTML = t;
     }
   } else {
+    // TODO: Need to check if it is a word like comma
     document.getElementById("word-current-letter").innerHTML = t[0];
     document.getElementById("word-next-letter").innerHTML = t.slice(
       1,
@@ -116,8 +117,9 @@ function updateWordDisplay() {
   cleanSlate();
 
   let w = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
+  // TODO: Check if the word is comma, dash, etc...
   if (state.currentWordLetter === 0) {
-    document.getElementById("word-current.letter").innerHTML = w[0];
+    document.getElementById("word-current-letter").innerHTML = w[0];
     document.getElementById("word-next-letter").innerHTML = w.slice(
       1,
       w.length
@@ -156,9 +158,14 @@ function currentKeyHighlight() {
     highlighted = document.querySelector("." + current);
     setHighlightColor(current);
   } else {
-    highlighted = document.querySelector(
-      "." + current[state.currentWordLetter]
-    );
+    // TODO: Check if its a space
+    if (current[state.currentWordLetter] === " ") {
+      highlighted = document.querySelector(".space");
+    } else {
+      highlighted = document.querySelector(
+        "." + current[state.currentWordLetter]
+      );
+    }
     setHighlightColor(current[state.currentWordLetter]);
   }
   highlighted.classList.add("keyboard-blink");
