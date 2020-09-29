@@ -99,7 +99,18 @@ a {
 
 .right-letter {
   position: absolute;
+  z-index: 9999;
   right: 0;
+}
+
+.input-hidden {
+  opacity: 0;
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  display: inline-block;
 }
 
 .word {

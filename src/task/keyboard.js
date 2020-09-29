@@ -81,7 +81,7 @@ function handleCorrectKeyPress() {
   if (t[state.currentLetter].length > 1) {
     updateWordDisplay();
     if (state.soundValue) {
-      playSoundInstantly(t[state.currentLetter[currentWordLetter]]);
+      playSoundInstantly(t[state.currentLetter[state.currentWordLetter]]);
     }
   } else {
     updateLetterDisplay();

@@ -24,7 +24,7 @@ function playSoundFromTimeQueue() {
     "../sound/" + state.soundTimeQueue.splice(0, 1) + ".mp3";
   if (state.soundTimeQueue.length > 0) {
     timeAudioElement.play();
-    timeAudioElement.addEventListener("ended", playSoundFromTimeQueue());
+    timeAudioElement.addEventListener("onended", playSoundFromTimeQueue());
   } else {
     timeAudioElement.play();
   }

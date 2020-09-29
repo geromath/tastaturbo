@@ -82,6 +82,7 @@ function startUITask() {
   // Hiding the start page
   document.getElementById("start-screen").classList.add("hidden");
   document.getElementById("main-screen").classList.remove("hidden");
+  document.getElementById("input-field").focus();
 
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[0];
   if (t.length === 1) {
