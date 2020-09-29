@@ -228,21 +228,27 @@ function endTask(victory) {
 
   let t = tasks[parseInt(location.hash.slice(1)) - 1];
 
-  document.getElementById("es-text").innerHTML = t.successNb;
-
   if (state.langValue === "Nb") {
     if (victory) {
+      document.getElementById("es-text").innerHTML = t.successNb;
+
       document.getElementById("left-button").innerHTML = "Tilbake";
       document.getElementById("right-button").innerHTML = "Neste oppgave";
     } else {
+      document.getElementById("es-text").innerHTML = t.failureNb;
+
       document.getElementById("left-button").innerHTML = "Tilbake";
       document.getElementById("right-button").innerHTML = "Prøv igjen";
     }
   } else {
     if (victory) {
+      document.getElementById("es-text").innerHTML = t.successNn;
+
       document.getElementById("left-button").innerHTML = "Tilbake";
       document.getElementById("right-button").innerHTML = "Neste oppgåve";
     } else {
+      document.getElementById("es-text").innerHTML = t.failureNn;
+
       document.getElementById("left-button").innerHTML = "Tilbake";
       document.getElementById("right-button").innerHTML = "Prøv igjen";
     }
