@@ -27,6 +27,7 @@ let state = {
   soundTimeQueue: [],
 
   lection: parseInt(location.hash.slice(1)) - 1,
+  introPlaying: false,
 };
 
 export { state };

@@ -1,13 +1,13 @@
-import { tasks } from './content.js';
-import { state } from './gameState.js';
+import { tasks } from "./content.js";
+import { state } from "./gameState.js";
 import {
   currentKeyHighlight,
   updateLetterDisplay,
   updateWordDisplay,
   blinkCurrentKey,
-} from './ui.js';
-import { addSoundToQueue, playSoundInstantly } from './sound.js';
-import { progressAnimation } from './animation.js';
+} from "./ui.js";
+import { addSoundToQueue, playSoundInstantly } from "./sound.js";
+import { progressAnimation } from "./animation.js";
 
 const registry = [];
 
@@ -51,6 +51,7 @@ function checkInput(key) {
       return true;
     }
   } else {
+    // Check if the word is comma, dash or something similar
     if (key === t[state.currentWordLetter]) {
       if (t.length === state.currentWordLetter + 1) {
         state.currentWordLetter = 0;
@@ -80,7 +81,7 @@ function handleCorrectKeyPress() {
   if (t[state.currentLetter].length > 1) {
     updateWordDisplay();
     if (state.soundValue) {
-      playSoundInstantly(t[state.currentLetter[currentWordLetter]]);
+      playSoundInstantly(t[state.currentLetter[state.currentWordLetter]]);
     }
   } else {
     updateLetterDisplay();
@@ -93,7 +94,7 @@ function handleCorrectKeyPress() {
 function handleWrongKeyPress() {
   // Play wrong sound
   if (state.soundValue) {
-    playSoundInstantly('feil');
+    playSoundInstantly("feil");
   }
 }
 

@@ -7,15 +7,17 @@
   width: var(--inputWidth);
   max-width: var(--maxInputWidth);
   margin: auto;
-  margin-top: 5px;
   overflow: hidden;
 
   text-align: center;
 
   background-color: var(--inputColor);
-  height: 21rem;
+  height: 19rem;
 
   border-radius: 0 0 1rem 1rem;
+
+  background-color: rgba(0, 0, 0, 0.15);
+  margin-bottom: 0.5rem;
 }
 
 /* %%%%%%%% KEYBOARD %%%%%%%% */
@@ -31,8 +33,6 @@
   align-self: center;
 
   text-align: center;
-
-  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .keyboard__row {
@@ -49,16 +49,16 @@
   top: 0;
 }
 .keyboard__row:nth-child(2) {
-  top: 4rem;
+  top: 3.5rem;
 }
 .keyboard__row:nth-child(3) {
-  top: 8rem;
+  top: 7rem;
 }
 .keyboard__row:nth-child(4) {
-  top: 12rem;
+  top: 10.5rem;
 }
 .keyboard__row:nth-child(5) {
-  top: 16rem;
+  top: 14rem;
 }
 
 .key {

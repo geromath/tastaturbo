@@ -64,10 +64,13 @@ a {
 
 .main-screen {
   width: 100%;
+  max-width: 1050px;
   height: 90vh;
   max-height: 90%;
   position: absolute;
   top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .letter-section {
@@ -77,23 +80,40 @@ a {
   font-size: 4rem;
   font-weight: bold;
   line-height: 10vh;
+  border-radius: 1rem 1rem 0 0;
+  margin-top: 0.5rem;
 }
 
 .single-letter {
   margin: auto;
-  width: 70vw;
+  width: 50rem;
   position: relative;
   color: #18404c;
 }
 
 .left-letter {
   position: absolute;
+  z-index: 9999;
   left: 0;
 }
 
 .right-letter {
   position: absolute;
+  z-index: 9999;
   right: 0;
+}
+
+.input-hidden {
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: transparent;
+  width: 200px;
+  height: 10px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .word {
@@ -117,6 +137,7 @@ a {
 .illustration-section {
   height: var(--image-height);
   position: relative;
+  margin: auto;
 }
 
 .tt-figurine {
@@ -170,4 +191,10 @@ a {
 
 .hidden {
   display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  :root {
+    --image-height: calc((1050px - 1rem) * (1139 / 4176));
+  }
 }
