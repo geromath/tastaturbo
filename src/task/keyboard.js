@@ -1,13 +1,13 @@
-import { tasks } from "./content.js";
-import { state } from "./gameState.js";
+import { tasks } from './content.js';
+import { state } from './gameState.js';
 import {
   currentKeyHighlight,
   updateLetterDisplay,
   updateWordDisplay,
   blinkCurrentKey,
-} from "./ui.js";
-import { addSoundToQueue, playSoundInstantly } from "./sound.js";
-import { progressAnimation } from "./animation.js";
+} from './ui.js';
+import { addSoundToQueue, playSoundInstantly } from './sound.js';
+import { progressAnimation } from './animation.js';
 
 const registry = [];
 
@@ -81,7 +81,12 @@ function handleCorrectKeyPress() {
   if (t[state.currentLetter].length > 1) {
     updateWordDisplay();
     if (state.soundValue) {
-      playSoundInstantly(t[state.currentLetter[state.currentWordLetter]]);
+      console.log(t[state.currentLetter][state.currentWordLetter] == ' ');
+      if (t[state.currentLetter][state.currentWordLetter] == ' ') {
+        playSoundInstantly('mellomrom');
+      } else {
+        playSoundInstantly(t[state.currentLetter][state.currentWordLetter]);
+      }
     }
   } else {
     updateLetterDisplay();
@@ -94,7 +99,7 @@ function handleCorrectKeyPress() {
 function handleWrongKeyPress() {
   // Play wrong sound
   if (state.soundValue) {
-    playSoundInstantly("feil");
+    playSoundInstantly('feil');
   }
 }
 

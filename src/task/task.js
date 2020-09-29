@@ -7,7 +7,7 @@ import {
   handleCorrectKeyPress,
   handleWrongKeyPress,
   timeSinceLastLetterSound,
-} from "./keyboard.js";
+} from './keyboard.js';
 
 import {
   checkSoundTimeQueue,
@@ -15,7 +15,7 @@ import {
   addSoundToQueue,
   playIntroSound,
   playOutroSound,
-} from "./sound.js";
+} from './sound.js';
 
 import {
   initTask,
@@ -23,12 +23,12 @@ import {
   updateTimeDisplay,
   endTask,
   changeButtonSymbol,
-} from "./ui.js";
+} from './ui.js';
 
-import { state } from "./gameState.js";
-import { tasks } from "./content.js";
+import { state } from './gameState.js';
+import { tasks } from './content.js';
 
-import { initAnimation } from "./animation.js";
+import { initAnimation } from './animation.js';
 
 function init() {
   initTask(state.signValue);
@@ -42,14 +42,14 @@ function init() {
 
   if (state.soundValue) {
     playIntroSound();
-    changeButtonSymbol(document.getElementById("ss-play-button-1"));
-    changeButtonSymbol(document.getElementById("ss-play-button-2"));
+    changeButtonSymbol(document.getElementById('ss-play-button-1'));
+    changeButtonSymbol(document.getElementById('ss-play-button-2'));
   }
 }
 
 function startTask() {
-  if (!document.getElementById("instant-audio").paused) {
-    document.getElementById("instant-audio").pause();
+  if (!document.getElementById('instant-audio').paused) {
+    document.getElementById('instant-audio').pause();
   }
 
   startUITask();
@@ -59,7 +59,7 @@ function startTask() {
 
   update(); //Start the game
 
-  document.addEventListener("keypress", function (event) {
+  document.addEventListener('keypress', function (event) {
     inputUpdate(event.key);
   });
 }
@@ -77,7 +77,7 @@ function update() {
     timeSinceLastLetterSound();
 
     if (state.time % (state.startTime / 4) === 0) {
-      addSoundToQueue("beep");
+      addSoundToQueue('beep');
     }
   }
 
@@ -94,17 +94,17 @@ function inputUpdate(key) {
       // Checks if input is a correct input or not
       handleCorrectKeyPress();
       if (state.currentLetter === 10) {
-        addSoundToQueue("Nå er vi i gang"); // Igang
+        addSoundToQueue('Nå er vi i gang'); // Igang
       } else if (
         state.currentLetter ===
         tasks[parseInt(location.hash.slice(1) - 1)].task.length / 2
       ) {
-        addSoundToQueue("Nå er vi halvveis"); // Halvveis
+        addSoundToQueue('Nå er vi halvveis'); // Halvveis
       } else if (
         state.currentLetter ===
         tasks[parseInt(location.hash.slice(1) - 1)].task.length - 10
       ) {
-        addSoundToQueue("Vi klarer det snart"); // Snart i mål
+        addSoundToQueue('Vi klarer det snart'); // Snart i mål
       }
     } else {
       handleWrongKeyPress();
@@ -115,6 +115,7 @@ function inputUpdate(key) {
     // TODO: Do something to celebrate the victory
     setGameState(false);
     endTask(true);
+    playOutroSound(true);
   }
 }
 
@@ -138,6 +139,7 @@ function _gameOver() {
   setGameState(false);
   if (!state.hasWon) {
     endTask(false);
+    playOutroSound(false);
   }
 }
 
@@ -147,5 +149,5 @@ function gameVictory() {
 
 init();
 
-document.getElementById("start-button").addEventListener("click", startTask);
-document.getElementById("start-button").focus();
+document.getElementById('start-button').addEventListener('click', startTask);
+document.getElementById('start-button').focus();
