@@ -16,7 +16,7 @@ let state = {
     return localStorage.getItem('--soundSlider') === '0';
   })(),
   langValue: (function () {
-    if (localStorage.getItem('--langSlider') === '1') {
+    if (localStorage.getItem('--langSlider') === '0') {
       return 'Nb';
     }
     return 'Nn';
