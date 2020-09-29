@@ -13,6 +13,7 @@ p {
 .wrapper {
   position: relative;
   width: 90%;
+  max-width: 1050px;
   background-color: rgba(117, 189, 120, 0.8);
   margin: auto;
   margin-top: 2rem;
