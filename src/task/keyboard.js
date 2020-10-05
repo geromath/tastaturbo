@@ -41,6 +41,24 @@ function timeSinceLastLetterSound() {
   }
 }
 
+let functionalWords = [
+  'comma',
+  'dash',
+  'dot',
+  'exclamation',
+  'question',
+  'quote',
+  'paren-left',
+  'paren-right',
+  'hash',
+
+  'slash',
+  'equals',
+  'star',
+  'colon',
+  'plus',
+];
+
 function checkInput(key) {
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
 
@@ -52,6 +70,80 @@ function checkInput(key) {
     }
   } else {
     // Check if the word is comma, dash or something similar
+    console.log(key);
+    if (functionalWords.includes(t)) {
+      if (t === 'comma') {
+        if (key === ',') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'dash') {
+        if (key === '-') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'exclamation') {
+        if (key === '!') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'question') {
+        if (key === '?') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'quote') {
+        if (key === '"') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'paren-left') {
+        if (key === '(') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'paren-right') {
+        if (key === ')') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'hash') {
+        if (key === '#') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'slash') {
+        if (key === '/') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'equals') {
+        if (key === '=') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'star') {
+        if (key === '*') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'colon') {
+        if (key === ':') {
+          state.currentLetter++;
+          return true;
+        }
+      } else if (t === 'plus') {
+        if (key === '+') {
+          state.currentLetter++;
+          return true;
+        }
+      } else {
+        if (key === '.') {
+          state.currentLetter++;
+          return true;
+        }
+      }
+    }
     if (key === t[state.currentWordLetter]) {
       if (t.length === state.currentWordLetter + 1) {
         state.currentWordLetter = 0;

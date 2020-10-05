@@ -86,7 +86,8 @@ a {
 
 .single-letter {
   margin: auto;
-  width: 50rem;
+  width: 70%;
+  min-width: 10rem;
   position: relative;
   color: #18404c;
 }
@@ -127,7 +128,11 @@ a {
 }
 
 .word__current-letter {
+  height: 8vh;
   color: #18404c;
+  box-shadow: 0 5px #18404c;
+  width: 1ch;
+  text-align: center;
 }
 
 .word__next-letter {

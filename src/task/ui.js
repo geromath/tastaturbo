@@ -1,103 +1,94 @@
-import { state } from "./gameState.js";
-import { tasks } from "./content.js";
-import { playIntroSound } from "./sound.js";
+import { state } from './gameState.js';
+import { tasks } from './content.js';
+import { playIntroSound } from './sound.js';
 
-const imgSource = "../img/";
+const imgSource = '../img/';
 let taskNumber = parseInt(location.hash.slice(1));
 
 const task = tasks[taskNumber - 1];
 
 if (taskNumber < 10) {
-  taskNumber = "0" + taskNumber;
+  taskNumber = '0' + taskNumber;
 }
 
 function initTask(sign) {
   if (sign) {
-    document.getElementById("sign-left-column").classList.remove("hidden");
-    document.getElementById("blind-left-column").classList.add("hidden");
+    document.getElementById('sign-left-column').classList.remove('hidden');
+    document.getElementById('blind-left-column').classList.add('hidden');
 
-    document.getElementById("ss-video").src =
-      "vid/tastaturbo-" + taskNumber + ".mp4";
+    document.getElementById('ss-video').src =
+      'vid/tastaturbo-' + taskNumber + '.mp4';
   } else {
-    document.getElementById("sign-left-column").classList.add("hidden");
-    document.getElementById("blind-left-column").classList.remove("hidden");
+    document.getElementById('sign-left-column').classList.add('hidden');
+    document.getElementById('blind-left-column').classList.remove('hidden');
   }
-  document.getElementById("start-tt-figurine").src =
-    imgSource + "tastaturbo-" + taskNumber + "-figuren.png";
+  document.getElementById('start-tt-figurine').src =
+    imgSource + 'tastaturbo-' + taskNumber + '.png';
 
-  if (state.langValue === "Nb") {
-    document.getElementById("intro-text-blind").innerHTML = task.introNb;
-    document.getElementById("intro-text-sign").innerHTML = task.introNb;
+  if (state.langValue === 'Nb') {
+    document.getElementById('intro-text-blind').innerHTML = task.introNb;
+    document.getElementById('intro-text-sign').innerHTML = task.introNb;
   } else {
-    document.getElementById("intro-text-blind").innerHTML = task.introNn;
-    document.getElementById("intro-text-sign").innerHTML = task.introNn;
+    document.getElementById('intro-text-blind').innerHTML = task.introNn;
+    document.getElementById('intro-text-sign').innerHTML = task.introNn;
   }
 
-  document.getElementById("tt-figurine").src =
-    imgSource + "tastaturbo-" + taskNumber + "-figuren.png";
-  document.getElementById("tt-background").src =
-    imgSource + "tastaturbo-bakgrunn-" + taskNumber + ".png";
-  document.getElementById("end-tt-figurine").src =
-    imgSource + "tastaturbo-" + taskNumber + "-figuren.png";
+  document.getElementById('tt-figurine').src =
+    imgSource + 'tastaturbo-' + taskNumber + '.png';
+  document.getElementById('tt-background').src =
+    imgSource + 'tastaturbo-bakgrunn-' + taskNumber + '.png';
+  document.getElementById('end-tt-figurine').src =
+    imgSource + 'tastaturbo-' + taskNumber + '.png';
 }
 
 const leftKeys = [
-  "q",
-  "a",
-  "z",
-  "1",
+  'q',
+  'a',
+  'z',
+  '1',
 
-  "w",
-  "s",
-  "x",
-  "2",
+  'w',
+  's',
+  'x',
+  '2',
 
-  "e",
-  "d",
-  "c",
-  "3",
+  'e',
+  'd',
+  'c',
+  '3',
 
-  "r",
-  "t",
-  "f",
-  "g",
-  "v",
-  "b",
-  "4",
-  "5",
+  'r',
+  't',
+  'f',
+  'g',
+  'v',
+  'b',
+  '4',
+  '5',
 ];
 
 const hand = {
-  leftPinky: ["q", "a", "z", "1"],
-  leftRing: ["w", "s", "x", "2"],
-  leftLong: ["e", "d", "c", "3"],
-  leftPoint: ["r", "t", "f", "g", "v", "b", "4", "5"],
+  leftPinky: ['q', 'a', 'z', '1'],
+  leftRing: ['w', 's', 'x', '2'],
+  leftLong: ['e', 'd', 'c', '3'],
+  leftPoint: ['r', 't', 'f', 'g', 'v', 'b', '4', '5'],
 
-  rightPoint: ["y", "u", "h", "j", "n", "m", "6", "7"],
-  rightLong: ["8", "i", "k"],
-  rightRing: ["9", "o", "l"],
-  rightPinky: ["0", "p", "ø", "å", "æ"],
+  rightPoint: ['y', 'u', 'h', 'j', 'n', 'm', '6', '7'],
+  rightLong: ['8', 'i', 'k'],
+  rightRing: ['9', 'o', 'l'],
+  rightPinky: ['0', 'p', 'ø', 'å', 'æ'],
 };
 function startUITask() {
   // Hiding the start page
-  document.getElementById("start-screen").classList.add("hidden");
-  document.getElementById("main-screen").classList.remove("hidden");
-  document.getElementById("input-field").focus();
+  document.getElementById('start-screen').classList.add('hidden');
+  document.getElementById('main-screen').classList.remove('hidden');
+  document.getElementById('input-field').focus();
 
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[0];
   if (t.length === 1) {
-    if (leftKeys.includes(t)) {
-      document.getElementById("left-letter").innerHTML = t;
-    } else {
-      document.getElementById("right-letter").innerHTML = t;
-    }
+    updateLetterDisplay();
   } else {
-    // TODO: Need to check if it is a word like comma
-    document.getElementById("word-current-letter").innerHTML = t[0];
-    document.getElementById("word-next-letter").innerHTML = t.slice(
-      1,
-      t.length
-    );
+    updateWordDisplay();
   }
 
   currentKeyHighlight();
@@ -105,34 +96,86 @@ function startUITask() {
 
 function updateLetterDisplay() {
   cleanSlate();
+  document.getElementById('word-current-letter').classList.add('hidden');
 
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
   if (leftKeys.includes(t)) {
-    document.getElementById("left-letter").innerHTML = t;
+    document.getElementById('left-letter').innerHTML = t;
   } else {
-    document.getElementById("right-letter").innerHTML = t;
+    document.getElementById('right-letter').innerHTML = t;
   }
 }
 
+let functionalWords = [
+  'comma',
+  'dash',
+  'dot',
+  'exclamation',
+  'question',
+  'quote',
+  'paren-left',
+  'paren-right',
+  'hash',
+
+  'slash',
+  'equals',
+  'star',
+  'colon',
+  'plus',
+];
+
 function updateWordDisplay() {
   cleanSlate();
+  document.getElementById('word-current-letter').classList.remove('remove');
 
   let w = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
-  // TODO: Check if the word is comma, dash, etc...
+  console.log(w);
+  if (functionalWords.includes(w)) {
+    if (w === 'comma') {
+      document.getElementById('word-current-letter').innerHTML = ',';
+    } else if (w === 'dash') {
+      document.getElementById('word-current-letter').innerHTML = '-';
+    } else if (w === 'exclamation') {
+      document.getElementById('word-current-letter').innerHTML = '!';
+    } else if (w === 'question') {
+      document.getElementById('word-current-letter').innerHTML = '?';
+    } else if (w === 'quote') {
+      document.getElementById('word-current-letter').innerHTML = '"';
+    } else if (w === 'paren-left') {
+      document.getElementById('word-current-letter').innerHTML = '(';
+    } else if (w === 'paren-right') {
+      document.getElementById('word-current-letter').innerHTML = ')';
+    } else if (w === 'hash') {
+      document.getElementById('word-current-letter').innerHTML = '#';
+    } else if (w === 'slash') {
+      document.getElementById('word-current-letter').innerHTML = '/';
+    } else if (w === 'equals') {
+      document.getElementById('word-current-letter').innerHTML = '=';
+    } else if (w === 'star') {
+      document.getElementById('word-current-letter').innerHTML = '*';
+    } else if (w === 'colon') {
+      document.getElementById('word-current-letter').innerHTML = ':';
+    } else if (w === 'plus') {
+      document.getElementById('word-current-letter').innerHTML = '+';
+    } else {
+      document.getElementById('word-current-letter').innerHTML = '.';
+    }
+    return;
+  }
   if (state.currentWordLetter === 0) {
-    document.getElementById("word-current-letter").innerHTML = w[0];
-    document.getElementById("word-next-letter").innerHTML = w.slice(
+    document.getElementById('word-current-letter').innerHTML = w[0];
+    document.getElementById('word-next-letter').innerHTML = w.slice(
       1,
       w.length
     );
   } else {
-    document.getElementById("word-previous-letter").innerHTML = w.slice(
+    document.getElementById('word-previous-letter').innerHTML = w.slice(
       0,
       state.currentWordLetter
     );
-    document.getElementById("word-current-letter").innerHTML =
+    document.getElementById('word-current-letter').innerHTML =
       w[state.currentWordLetter];
-    document.getElementById("word-next-letter").innerHTML = w.slice(
+    document.getElementById('word-next-letter').innerHTML = w.slice(
       state.currentWordLetter + 1,
       w.length
     );
@@ -140,36 +183,35 @@ function updateWordDisplay() {
 }
 
 function cleanSlate() {
-  document.getElementById("word-previous-letter").innerHTML = "";
-  document.getElementById("word-current-letter").innerHTML = "";
-  document.getElementById("word-next-letter").innerHTML = "";
-  document.getElementById("right-letter").innerHTML = "";
-  document.getElementById("left-letter").innerHTML = "";
+  document.getElementById('word-previous-letter').innerHTML = '';
+  document.getElementById('word-current-letter').innerHTML = '';
+  document.getElementById('word-next-letter').innerHTML = '';
+  document.getElementById('right-letter').innerHTML = '';
+  document.getElementById('left-letter').innerHTML = '';
 }
 
 let highlighted;
 function currentKeyHighlight() {
   if (highlighted) {
-    highlighted.classList.remove("keyboard-blink");
+    highlighted.classList.remove('keyboard-blink');
   }
 
   let current =
     tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
-  if (current.length === 1) {
-    highlighted = document.querySelector("." + current);
+  if (current.length === 1 || functionalWords.includes(current)) {
+    highlighted = document.querySelector('.' + current);
     setHighlightColor(current);
   } else {
-    // TODO: Check if its a space
-    if (current[state.currentWordLetter] === " ") {
-      highlighted = document.querySelector(".space");
+    if (current[state.currentWordLetter] === ' ') {
+      highlighted = document.querySelector('.space');
     } else {
       highlighted = document.querySelector(
-        "." + current[state.currentWordLetter]
+        '.' + current[state.currentWordLetter]
       );
     }
     setHighlightColor(current[state.currentWordLetter]);
   }
-  highlighted.classList.add("keyboard-blink");
+  highlighted.classList.add('keyboard-blink');
 }
 
 function blinkCurrentKey() {
@@ -177,139 +219,144 @@ function blinkCurrentKey() {
     tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
   if (current.length === 1) {
     if (leftKeys.includes(current)) {
-      document.getElementById("left-letter").classList.add("letter-blink");
+      document.getElementById('left-letter').classList.add('letter-blink');
       setTimeout(function () {
-        document.getElementById("left-letter").classList.remove("letter-blink");
+        document.getElementById('left-letter').classList.remove('letter-blink');
       }, 400);
     } else {
-      document.getElementById("right-letter").classList.add("letter-blink");
+      document.getElementById('right-letter').classList.add('letter-blink');
       setTimeout(function () {
         document
-          .getElementById("right-letter")
-          .classList.remove("letter-blink");
+          .getElementById('right-letter')
+          .classList.remove('letter-blink');
       }, 400);
     }
+  } else {
+    if (current[state.currentWordLetter] === ' ') {
+      document
+        .getElementById('word-current-letter')
+        .classList.add('letter-blink--space');
+      setTimeout(function () {
+        document
+          .getElementById('word-current-letter')
+          .classList.remove('letter-blink--space');
+      }, 400);
+    }
+    document
+      .getElementById('word-current-letter')
+      .classList.add('letter-blink');
+    setTimeout(function () {
+      document
+        .getElementById('word-current-letter')
+        .classList.remove('letter-blink');
+    }, 400);
   }
 }
 
 function setHighlightColor(key) {
-  let color = "#ffffff";
+  let color = '#ffffff';
   if (hand.leftPinky.includes(key)) {
-    color = "#0000ff";
+    color = '#0000ff';
   } else if (hand.leftRing.includes(key)) {
-    color = "#ff0000";
+    color = '#ff0000';
   } else if (hand.leftLong.includes(key)) {
-    color = "#ffff00";
+    color = '#ffff00';
   } else if (hand.leftPoint.includes(key)) {
-    color = "#00ff00";
+    color = '#00ff00';
   } else if (hand.rightPoint.includes(key)) {
-    color = "#00ff00";
+    color = '#00ff00';
   } else if (hand.rightLong.includes(key)) {
-    color = "#ffff00";
+    color = '#ffff00';
   } else if (hand.rightRing.includes(key)) {
-    color = "#ff0000";
+    color = '#ff0000';
   } else if (hand.rightPinky.includes(key)) {
-    color = "#0000ff";
+    color = '#0000ff';
   }
 
-  document.documentElement.style.setProperty("--highlight-color", color);
+  document.documentElement.style.setProperty('--highlight-color', color);
 }
 
 function updateTimeDisplay() {
   document.documentElement.style.setProperty(
-    "--timer",
-    (state.time / state.startTime) * 100 + "%"
+    '--timer',
+    (state.time / state.startTime) * 100 + '%'
   );
 }
 
 function endTask(victory) {
-  document.getElementById("end-screen").classList.remove("hidden");
-  document.getElementById("main-screen").classList.add("hidden");
+  document.getElementById('end-screen').classList.remove('hidden');
+  document.getElementById('main-screen').classList.add('hidden');
 
   let t = tasks[parseInt(location.hash.slice(1)) - 1];
 
-  if (state.langValue === "Nb") {
+  if (state.langValue === 'Nb') {
     if (victory) {
-      document.getElementById("es-text").innerHTML = t.successNb;
+      document.getElementById('es-text').innerHTML = t.successNb;
 
-      document.getElementById("left-button").innerHTML = "Tilbake";
-      document.getElementById("right-button").innerHTML = "Neste oppgave";
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Neste oppgave';
     } else {
-      document.getElementById("es-text").innerHTML = t.failureNb;
+      document.getElementById('es-text').innerHTML = t.failureNb;
 
-      document.getElementById("left-button").innerHTML = "Tilbake";
-      document.getElementById("right-button").innerHTML = "Prøv igjen";
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Prøv igjen';
     }
   } else {
     if (victory) {
-      document.getElementById("es-text").innerHTML = t.successNn;
+      document.getElementById('es-text').innerHTML = t.successNn;
 
-      document.getElementById("left-button").innerHTML = "Tilbake";
-      document.getElementById("right-button").innerHTML = "Neste oppgåve";
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Neste oppgåve';
     } else {
-      document.getElementById("es-text").innerHTML = t.failureNn;
+      document.getElementById('es-text').innerHTML = t.failureNn;
 
-      document.getElementById("left-button").innerHTML = "Tilbake";
-      document.getElementById("right-button").innerHTML = "Prøv igjen";
+      document.getElementById('left-button').innerHTML = 'Tilbake';
+      document.getElementById('right-button').innerHTML = 'Prøv igjen';
     }
   }
   if (victory) {
     document
-      .getElementById("left-button")
-      .addEventListener("click", function () {
-        location = "../";
+      .getElementById('left-button')
+      .addEventListener('click', function () {
+        location = '../';
       });
     document
-      .getElementById("right-button")
-      .addEventListener("click", function () {
-        location = "../task#" + (state.lection + 2);
+      .getElementById('right-button')
+      .addEventListener('click', function () {
+        location = '../task#' + (state.lection + 2);
       });
   } else {
     document
-      .getElementById("left-button")
-      .addEventListener("click", function () {
-        location = "../";
+      .getElementById('left-button')
+      .addEventListener('click', function () {
+        location = '../';
       });
     document
-      .getElementById("right-button")
-      .addEventListener("click", function () {
+      .getElementById('right-button')
+      .addEventListener('click', function () {
         location.reload();
       });
   }
 }
 
 document
-  .getElementById("ss-play-button-1")
-  .addEventListener("click", function (e) {
+  .getElementById('ss-play-button-1')
+  .addEventListener('click', function (e) {
     if (state.introPlaying) {
-      document.getElementById("instant-audio").pause();
+      document.getElementById('instant-audio').pause();
       state.introPlaying = false;
     } else {
       state.introPlaying = true;
-      document.getElementById("instant-audio").play();
-    }
-    changeButtonSymbol(e.target);
-  });
-
-document
-  .getElementById("ss-play-button-2")
-  .addEventListener("click", function (e) {
-    if (state.introPlaying) {
-      document.getElementById("instant-audio").pause();
-      state.introPlaying = false;
-    } else {
-      state.introPlaying = true;
-      document.getElementById("instant-audio").play();
+      document.getElementById('instant-audio').play();
     }
     changeButtonSymbol(e.target);
   });
 
 function changeButtonSymbol(e) {
-  // TODO: Add logic for when it's supposed to be what...
   if (state.introPlaying) {
-    e.src = "../img/Knapper-stopp.png";
+    e.src = '../img/Knapper-stopp.png';
   } else {
-    e.src = "../img/Knapp-spill.png";
+    e.src = '../img/Knapp-spill.png';
   }
 }
 
