@@ -2461,6 +2461,7 @@ const tasks = [
     failureNn: 'Skal vi prøve å fange fleire fisk? Start om att. ',
     task: [
       3,
+      10,
       5,
       7,
       1,

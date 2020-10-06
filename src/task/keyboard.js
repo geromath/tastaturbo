@@ -69,8 +69,6 @@ function checkInput(key) {
       return true;
     }
   } else {
-    // Check if the word is comma, dash or something similar
-    console.log(key);
     if (functionalWords.includes(t)) {
       if (t === 'comma') {
         if (key === ',') {
@@ -144,6 +142,26 @@ function checkInput(key) {
         }
       }
     }
+    if (Number.isInteger(t)) {
+      if (t < 10) {
+        if (parseInt(key) === t) {
+          state.currentLetter++;
+          return true;
+        }
+      } else {
+        let temp = t.toString();
+        if (key === temp[state.currentWordLetter]) {
+          if (state.currentWordLetter === temp.length - 1) {
+            state.currentLetter++;
+            state.currentWordLetter = 0;
+          } else {
+            state.currentWordLetter++;
+          }
+          return true;
+        }
+        return false;
+      }
+    }
     if (key === t[state.currentWordLetter]) {
       if (t.length === state.currentWordLetter + 1) {
         state.currentWordLetter = 0;
@@ -170,7 +188,10 @@ function handleCorrectKeyPress() {
   blinkCurrentKey();
   progressAnimation();
 
-  if (t[state.currentLetter].length > 1) {
+  if (
+    t[state.currentLetter].length > 1 ||
+    Number.isInteger(t[state.currentLetter])
+  ) {
     updateWordDisplay();
     if (state.soundValue) {
       console.log(t[state.currentLetter][state.currentWordLetter] == ' ');

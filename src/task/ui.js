@@ -129,7 +129,6 @@ function updateWordDisplay() {
   document.getElementById('word-current-letter').classList.remove('remove');
 
   let w = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
-  console.log(w);
   if (functionalWords.includes(w)) {
     if (w === 'comma') {
       document.getElementById('word-current-letter').innerHTML = ',';
@@ -162,6 +161,21 @@ function updateWordDisplay() {
     }
     return;
   }
+  if (Number.isInteger(w)) {
+    if (w < 10) {
+      document.getElementById('word-current-letter').innerHTML = w;
+    } else {
+      let temp = w.toString();
+      if (state.currentWordLetter === 0) {
+        document.getElementById('word-current-letter').innerHTML = temp[0];
+        document.getElementById('word-next-letter').innerHTML = temp[1];
+      } else {
+        document.getElementById('word-previous-letter').innerHTML = temp[0];
+        document.getElementById('word-current-letter').innerHTML = temp[1];
+      }
+    }
+    return;
+  }
   if (state.currentWordLetter === 0) {
     document.getElementById('word-current-letter').innerHTML = w[0];
     document.getElementById('word-next-letter').innerHTML = w.slice(
@@ -190,6 +204,18 @@ function cleanSlate() {
   document.getElementById('left-letter').innerHTML = '';
 }
 
+const numbers = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+];
 let highlighted;
 function currentKeyHighlight() {
   if (highlighted) {
@@ -201,6 +227,15 @@ function currentKeyHighlight() {
   if (current.length === 1 || functionalWords.includes(current)) {
     highlighted = document.querySelector('.' + current);
     setHighlightColor(current);
+  } else if (Number.isInteger(current)) {
+    if (current < 10) {
+      highlighted = document.querySelector('.' + numbers[current]);
+    } else {
+      let temp = current.toString();
+      highlighted = document.querySelector(
+        '.' + numbers[temp[state.currentWordLetter]]
+      );
+    }
   } else {
     if (current[state.currentWordLetter] === ' ') {
       highlighted = document.querySelector('.space');
