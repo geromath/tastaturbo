@@ -1,6 +1,7 @@
 import { state } from './gameState.js';
 import { tasks } from './content.js';
 import { playIntroSound } from './sound.js';
+import { progressAnimation } from './animation.js';
 
 const imgSource = '../img/';
 let taskNumber = parseInt(location.hash.slice(1));
@@ -84,6 +85,10 @@ function startUITask() {
   document.getElementById('main-screen').classList.remove('hidden');
   document.getElementById('input-field').focus();
 
+  if (parseInt(location.hash.slice(1)) === 6) {
+    document.getElementById('tt-figurine').style.width = '60%';
+  }
+
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[0];
   if (t.length === 1) {
     updateLetterDisplay();
@@ -92,6 +97,7 @@ function startUITask() {
   }
 
   currentKeyHighlight();
+  progressAnimation();
 }
 
 function updateLetterDisplay() {

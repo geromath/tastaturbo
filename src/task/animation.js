@@ -48,6 +48,7 @@ function progressAnimation() {
       goalY = animation[currentAnimationStep][1];
       previousX = currentX;
       previousY = currentY;
+      console.log(goalX, goalY, previousX, previousY);
       break;
     }
   }
@@ -61,29 +62,17 @@ function progressAnimation() {
   }
 
   // Animate!!
-  if (goalX > previousX) {
-    currentX =
-      (goalX - previousX) *
+  currentX =
+    previousX +
+    (goalX - previousX) *
       ((state.currentLetter - animationStepsTaken + taskParts[0]) /
         taskParts[currentAnimationStep]);
-  } else {
-    currentX =
-      (previousX - goalX) *
-      ((state.currentLetter - animationStepsTaken + taskParts[0]) /
-        taskParts[currentAnimationStep]);
-  }
 
-  if (goalY > previousY) {
-    currentY =
-      (goalY - previousY) *
+  currentY =
+    previousY +
+    (goalY - previousY) *
       ((state.currentLetter - animationStepsTaken + taskParts[0]) /
         taskParts[currentAnimationStep]);
-  } else {
-    currentY =
-      (previousY - goalY) *
-      ((state.currentLetter - animationStepsTaken + taskParts[0]) /
-        taskParts[currentAnimationStep]);
-  }
 
   document.documentElement.style.setProperty('--currentX', currentX + '%');
   document.documentElement.style.setProperty('--currentY', currentY + '%');

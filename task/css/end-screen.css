@@ -6,9 +6,10 @@
   background-color: rgb(154, 217, 230);
 }
 
-.es__text {
+.es__text p {
   font-size: 2rem;
   font-weight: bold;
+  line-height: 1.3em;
 }
 
 .button-container {

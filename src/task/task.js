@@ -87,6 +87,13 @@ function update() {
 }
 
 function inputUpdate(key) {
+  if (gameVictory()) {
+    // TODO: Do something to celebrate the victory
+    setGameState(false);
+    endTask(true);
+    playOutroSound(true);
+  }
+
   // Updates at every time a key in the register is pressed
   if (inputInRegister(key)) {
     // Checks if input is in "safe" key
@@ -109,13 +116,6 @@ function inputUpdate(key) {
     } else {
       handleWrongKeyPress();
     }
-  }
-
-  if (gameVictory()) {
-    // TODO: Do something to celebrate the victory
-    setGameState(false);
-    endTask(true);
-    playOutroSound(true);
   }
 }
 
