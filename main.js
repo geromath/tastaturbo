@@ -6,7 +6,7 @@ let open = false;
 const settingsWindow = document.getElementById('settings-window');
 
 let langSliderValue = parseInt(getLocalValue('--langSlider')) || 0;
-let soundSliderValue = parseInt(getLocalValue('--soundSlider')) || 1;
+let soundSliderValue = parseInt(getLocalValue('--soundSlider')) || 0;
 let signSliderValue = parseInt(getLocalValue('--signSlider')) || 0;
 
 setLocalValue('--langSlider', langSliderValue);
