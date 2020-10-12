@@ -115,6 +115,7 @@ a {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
+  text-decoration: none;
 }
 
 .word {
@@ -192,6 +193,15 @@ a {
   height: var(--timer);
   width: 100%;
   background-color: #ccaa11;
+}
+
+.color-red {
+  color: red;
+}
+
+.border-red {
+  border: 1px solid red;
+  box-sizing: border-box;
 }
 
 .hidden {

@@ -5,6 +5,7 @@ import {
   updateLetterDisplay,
   updateWordDisplay,
   blinkCurrentKey,
+  wrongKeyPressedHighlight,
 } from './ui.js';
 import { addSoundToQueue, playSoundInstantly } from './sound.js';
 import { progressAnimation } from './animation.js';
@@ -209,8 +210,10 @@ function handleCorrectKeyPress() {
   }
 }
 
-function handleWrongKeyPress() {
+function handleWrongKeyPress(key) {
   // Play wrong sound
+  wrongKeyPressedHighlight(key);
+  
   if (state.soundValue) {
     playSoundInstantly('feil');
   }

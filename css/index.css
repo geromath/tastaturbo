@@ -226,14 +226,14 @@ label {
   font-size: 2rem;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   position: relative;
   width: 0;
 }
 
-input[type="checkbox"]::before,
-input[type="checkbox"]::after {
-  content: " ";
+input[type='checkbox']::before,
+input[type='checkbox']::after {
+  content: ' ';
   position: absolute;
   top: 50%;
   right: 0;
@@ -242,32 +242,19 @@ input[type="checkbox"]::after {
   transform: translate(0, -10%);
 }
 
-input[type="checkbox"]::before {
+input[type='checkbox']::before {
   width: 80px;
 }
 
-input[type="checkbox"]::after {
+input[type='checkbox']::after {
   width: 40px;
   background-color: red;
   transform: translate(-100%, -10%);
 }
 
-input[type="checkbox"]:checked::after {
+input[type='checkbox']:checked::after {
   background-color: green;
   transform: translate(0, -10%);
-}
-
-/* SOUND CHECKBOX IS DIFFERENT */
-
-#sound::after {
-  width: 40px;
-  background-color: green;
-  transform: translate(0%, -10%);
-}
-
-#sound:checked::after {
-  background-color: red;
-  transform: translate(-100%, -10%);
 }
 
 .radio-container {
@@ -278,8 +265,8 @@ input[type="checkbox"]:checked::after {
   justify-content: space-between;
 }
 
-input[type="radio"]:nth-child(1)::after {
-  content: " ";
+input[type='radio']:nth-child(1)::after {
+  content: ' ';
   position: absolute;
   width: 40px;
   height: 40px;
@@ -288,16 +275,16 @@ input[type="radio"]:nth-child(1)::after {
   background-color: lightgrey;
 }
 
-input[type="radio"]:nth-child(1):checked::after {
-  content: " ";
+input[type='radio']:nth-child(1):checked::after {
+  content: ' ';
   position: absolute;
   width: 40px;
   height: 40px;
   background-color: green;
 }
 
-input[type="radio"]:nth-child(2)::before {
-  content: " ";
+input[type='radio']:nth-child(2)::before {
+  content: ' ';
   position: absolute;
   width: 40px;
   height: 40px;
@@ -306,8 +293,8 @@ input[type="radio"]:nth-child(2)::before {
   right: 0;
 }
 
-input[type="radio"]:nth-child(2):checked::before {
-  content: " ";
+input[type='radio']:nth-child(2):checked::before {
+  content: ' ';
   position: absolute;
   width: 40px;
   height: 40px;
@@ -333,8 +320,8 @@ input[type="radio"]:nth-child(2):checked::before {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-      "links logo"
-      "header header";
+      'links logo'
+      'header header';
   }
 
   .header {

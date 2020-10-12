@@ -13,7 +13,7 @@ let state = {
     return localStorage.getItem('--signSlider') === '1';
   })(),
   soundValue: (function () {
-    return localStorage.getItem('--soundSlider') === '0';
+    return localStorage.getItem('--soundSlider') === '1';
   })(),
   langValue: (function () {
     if (localStorage.getItem('--langSlider') === '0') {

@@ -1,5 +1,3 @@
-// Funksjoner som setter og getter settings. 
-
 
 // LocalStorage functions
 const setLocalValue = function (id, value) {

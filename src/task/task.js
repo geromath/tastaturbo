@@ -43,7 +43,6 @@ function init() {
   if (state.soundValue) {
     playIntroSound();
     changeButtonSymbol(document.getElementById('ss-play-button-1'));
-    changeButtonSymbol(document.getElementById('ss-play-button-2'));
   }
 }
 
@@ -114,7 +113,7 @@ function inputUpdate(key) {
         addSoundToQueue('Vi klarer det snart'); // Snart i mål
       }
     } else {
-      handleWrongKeyPress();
+      handleWrongKeyPress(key);
     }
   }
 }

@@ -6,7 +6,7 @@ let open = false;
 const settingsWindow = document.getElementById('settings-window');
 
 let langSliderValue = parseInt(getLocalValue('--langSlider')) || 0;
-let soundSliderValue = parseInt(getLocalValue('--soundSlider')) || 0;
+let soundSliderValue = parseInt(getLocalValue('--soundSlider')) || 1;
 let signSliderValue = parseInt(getLocalValue('--signSlider')) || 0;
 
 setLocalValue('--langSlider', langSliderValue);
@@ -71,9 +71,9 @@ window.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     let target = document.getElementById(e.target.id);
     if (
-      e.target.id === 'lang' ||
-      e.target.id === 'sound' ||
-      e.target.id === 'sign'
+      target === 'lang' ||
+      target === 'sound' ||
+      target === 'sign'
     ) {
       target.checked === true
         ? (target.checked = false)

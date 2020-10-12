@@ -317,6 +317,22 @@ function setHighlightColor(key) {
   document.documentElement.style.setProperty('--highlight-color', color);
 }
 
+function wrongKeyPressedHighlight(key) {
+  document.getElementById('left-letter').classList.add('color-red');
+  document.getElementById('word-current-letter').classList.add('color-red');
+  document.getElementById('right-letter').classList.add('color-red');
+
+  document.querySelector('.' + key).classList.add('border-red');
+
+  setTimeout(function () {
+    document.getElementById('left-letter').classList.remove('color-red');
+    document.getElementById('word-current-letter').classList.remove('color-red');
+    document.getElementById('right-letter').classList.remove('color-red');
+  
+    document.querySelector('.' + key).classList.remove('border-red');
+  }, 600);
+}
+
 function updateTimeDisplay() {
   document.documentElement.style.setProperty(
     '--timer',
@@ -411,4 +427,5 @@ export {
   currentKeyHighlight,
   blinkCurrentKey,
   changeButtonSymbol,
+  wrongKeyPressedHighlight
 };
