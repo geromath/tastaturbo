@@ -49,20 +49,26 @@ window.addEventListener('click', function (event) {
     if (soundSliderValue === 0) {
       soundSliderValue = 1;
       toggleSlider(1, '--soundSlider');
+      signSliderValue = 0;
+      toggleSlider(0, '--signSlider');
     } else {
       soundSliderValue = 0;
       toggleSlider(0, '--soundSlider');
+      signSliderValue = 1;
+      toggleSlider(1, '--signSlider');
     }
   }
   if (event.target.id === 'sign') {
     if (signSliderValue === 0) {
       signSliderValue = 1;
       toggleSlider(1, '--signSlider');
-      toggleSlider(1, '--soundSlider');
+      soundSliderValue = 0;
+      toggleSlider(0, '--soundSlider');
     } else {
       signSliderValue = 0;
       toggleSlider(0, '--signSlider');
-      toggleSlider(0, '--soundSlider');
+      soundSliderValue = 1;
+      toggleSlider(1, '--soundSlider');
     }
   }
 });
