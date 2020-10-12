@@ -100,18 +100,26 @@ window.addEventListener('keypress', function (e) {
       if (soundSliderValue === 0) {
         soundSliderValue = 1;
         toggleSlider(1, '--soundSlider');
+        signSliderValue = 0;
+        toggleSlider(0, '--signSlider');
       } else {
         soundSliderValue = 0;
-        toggleSlider(0, '--signSlider');
+        toggleSlider(0, '--soundSlider');
+        signSliderValue = 1;
+        toggleSlider(1, '--signSlider');
       }
     }
     if (e.target.id === 'sign') {
       if (signSliderValue === 0) {
         signSliderValue = 1;
-        toggleSlider(1, '--signSlider');
-      } else {
-        signSliderValue = 0;
-        toggleSlider(0, '--signSlider');
+      toggleSlider(1, '--signSlider');
+      soundSliderValue = 0;
+      toggleSlider(0, '--soundSlider');
+    } else {
+      signSliderValue = 0;
+      toggleSlider(0, '--signSlider');
+      soundSliderValue = 1;
+      toggleSlider(1, '--soundSlider');
       }
     }
   }
