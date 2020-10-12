@@ -5,9 +5,31 @@ let open = false;
 
 const settingsWindow = document.getElementById('settings-window');
 
-let langSliderValue = parseInt(getLocalValue('--langSlider')) || 0;
-let soundSliderValue = parseInt(getLocalValue('--soundSlider')) || 0;
-let signSliderValue = parseInt(getLocalValue('--signSlider')) || 0;
+let langSliderValue, soundSliderValue, signSliderValue;
+
+if (parseInt(getLocalValue('--langSlider')) === 1) {
+  langSliderValue = 1;
+} else {
+  langSliderValue = 0;
+}
+
+if (parseInt(getLocalValue('--soundSlider')) === 1) {
+  soundSliderValue = 1;
+  signSliderValue = 0;
+} else {
+  soundSliderValue = 0;
+  signSliderValue = 1;
+}
+
+if (parseInt(getLocalValue('--signSlider')) === 1) {
+  signSliderValue = 1;
+  soundSliderValue = 0;
+} else {
+  signSliderValue = 0;
+  soundSliderValue = 1;
+}
+
+console.log(signSliderValue, soundSliderValue, langSliderValue);
 
 setLocalValue('--langSlider', langSliderValue);
 setLocalValue('--soundSlider', soundSliderValue);
