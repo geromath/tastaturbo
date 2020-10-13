@@ -1,7 +1,8 @@
 :root {
   --timer: 100%;
 
-  --image-height: calc((100vw - 1rem) * (1139 / 4176));
+  --image-height: calc((1050px - 1rem) * (1139 / 4176));
+  /*--image-height: calc((100vw - 1rem) * (1139 / 4176));*/
 
   --currentX: 0;
   --currentY: 0;

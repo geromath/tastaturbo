@@ -726,9 +726,8 @@ const tasks = [
       a,
       'ja',
     ],
-    startPosition: [0, -25],
+    startPosition: [2, 0],
     animation: [
-      [2, 0],
       [9, 7],
       [18, 16],
       [27, 25],
