@@ -263,6 +263,7 @@ input[type='checkbox']:checked::after {
   display: flex;
   width: 80px;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 input[type='radio']:nth-child(1)::after {
@@ -409,5 +410,6 @@ input[type='radio']:nth-child(2):checked::before {
 }
 
 .focus:focus {
+  box-sizing: border-box;
   border: 2px solid red;
 }

@@ -132,7 +132,7 @@ let functionalWords = [
 
 function updateWordDisplay() {
   cleanSlate();
-  document.getElementById('word-current-letter').classList.remove('remove');
+  document.getElementById('word-current-letter').classList.remove('hidden');
 
   let w = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
   if (functionalWords.includes(w)) {

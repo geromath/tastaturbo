@@ -1,4 +1,5 @@
 import { state } from './gameState.js';
+import { changeButtonSymbol } from './ui.js';
 
 let timeAudioElement = document.getElementById('time-audio');
 let instantAudioElement = document.getElementById('instant-audio');
@@ -38,14 +39,21 @@ function playIntroSound() {
     instantAudioElement.src =
       '../sound/L' + (state.lection + 1) + '_tt1_nn1.mp3';
   }
-  instantAudioElement.play();
-  state.introPlaying = true;
-
-  instantAudioElement.addEventListener('onended', function () {
-    state.introPlaying = false;
-    changeButtonSymbol(document.getElementById('ss-play-button-1'));
-    changeButtonSymbol(document.getElementById('ss-play-button-2'));
-  });
+  let autoplayPromise = instantAudioElement.play();
+  if (autoplayPromise !== undefined) {
+    autoplayPromise.then(() => {
+      state.introPlaying = true;
+      instantAudioElement.addEventListener('onended', function () {
+        state.introPlaying = false;
+        changeButtonSymbol(document.getElementById('ss-play-button-1'));
+      });
+      changeButtonSymbol(document.getElementById('ss-play-button-1'));
+    }).catch(error => {
+      state.introPlaying = false;
+      if (error.name === 'NotAllowedError') {
+      }
+    })
+  }
 }
 
 function playOutroSound(victory) {

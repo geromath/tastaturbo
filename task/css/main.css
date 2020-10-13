@@ -86,7 +86,7 @@ a {
 
 .single-letter {
   margin: auto;
-  width: 70%;
+  width: 5em;
   min-width: 10rem;
   position: relative;
   color: #18404c;
@@ -202,6 +202,13 @@ a {
 .border-red {
   border: 1px solid red;
   box-sizing: border-box;
+}
+
+a:focus,
+button:focus {
+  box-sizing: border-box;
+  border: 2px solid red;
+  outline: none;
 }
 
 .hidden {
