@@ -32,13 +32,19 @@ function playSoundFromTimeQueue() {
 }
 
 function playIntroSound() {
+  let t = (state.lection + 1);
+  if (t < 10) {
+    t = '0' + t;
+  }
+
   if (state.langValue == 'Nb') {
     instantAudioElement.src =
-      '../sound/L' + (state.lection + 1) + '_tt1_bm1.mp3';
+      '../sound/L' + t + '_bm_01.mp3';
   } else {
     instantAudioElement.src =
-      '../sound/L' + (state.lection + 1) + '_tt1_nn1.mp3';
+      '../sound/L' + t + '_nn_01.mp3';
   }
+  instantAudioElement.load();
   let autoplayPromise = instantAudioElement.play();
   if (autoplayPromise !== undefined) {
     autoplayPromise.then(() => {
@@ -57,21 +63,26 @@ function playIntroSound() {
 }
 
 function playOutroSound(victory) {
+  let t = (state.lection + 1);
+  if (t < 10) {
+    t = '0' + t;
+  }
+  
   if (state.langValue == 'Nb') {
     if (victory) {
       instantAudioElement.src =
-        '../sound/L' + (state.lection + 1) + '_tt1_bm2.mp3';
+        '../sound/L' + t + '_bm_02.mp3';
     } else {
       instantAudioElement.src =
-        '../sound/L' + (state.lection + 1) + '_tt1_bm3.mp3';
+        '../sound/L' + t + '_bm_03.mp3';
     }
   } else {
     if (victory) {
       instantAudioElement.src =
-        '../sound/L' + (state.lection + 1) + '_tt1_nn2.mp3';
+        '../sound/L' + t + '_nn_02.mp3';
     } else {
       instantAudioElement.src =
-        '../sound/L' + (state.lection + 1) + '_tt1_nn3.mp3';
+        '../sound/L' + t + '_nn_03.mp3';
     }
   }
   instantAudioElement.play();
