@@ -7,7 +7,7 @@ import {
   blinkCurrentKey,
   wrongKeyPressedHighlight,
 } from './ui.js';
-import { addSoundToQueue, playSoundInstantly } from './sound.js';
+import { addSoundToQueue, playSoundInstantly, playFingerToUse } from './sound.js';
 import { progressAnimation } from './animation.js';
 
 const registry = [];
@@ -33,12 +33,15 @@ function timeSinceLastLetterSound() {
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
 
   if (state.lastLetterSoundPLayedAt - state.time > 3) {
-    if (t.length > 1) {
+    if (t.length > 1 && state.soundTimeQueue[state.soundTimeQueue.length - 1] != t[currentWordLetter]) {
       addSoundToQueue(t[state.currentWordLetter]);
+      state.lastLetterSoundPLayedAt = state.time;
     } else {
-      addSoundToQueue(t);
+      if (state.soundTimeQueue[state.soundTimeQueue.length - 1] != t) {
+        addSoundToQueue(t);
+        state.lastLetterSoundPLayedAt = state.time;
+      }
     }
-    state.lastLetterSoundPLayedAt = state.time;
   }
 }
 
@@ -197,25 +200,42 @@ function handleCorrectKeyPress() {
     if (state.soundValue) {
       console.log(t[state.currentLetter][state.currentWordLetter] == ' ');
       if (t[state.currentLetter][state.currentWordLetter] == ' ') {
-        playSoundInstantly('mellomrom');
+        setTimeout(function () {
+          playSoundInstantly('mellomrom');
+        }, 300);
       } else {
+        setTimeout(function () {
         playSoundInstantly(t[state.currentLetter][state.currentWordLetter]);
+        }, 300);
       }
     }
   } else {
     updateLetterDisplay();
     if (state.soundValue) {
-      playSoundInstantly(t[state.currentLetter]);
+      setTimeout(function () {
+        playSoundInstantly(t[state.currentLetter]);
+      }, 300);
     }
   }
 }
 
+let wrongKeysInRow = 0;
 function handleWrongKeyPress(key) {
   // Play wrong sound
   wrongKeyPressedHighlight(key);
-  
+  wrongKeysInRow ++;
   if (state.soundValue) {
-    playSoundInstantly('feil');
+    setTimeout(function () {
+      playSoundInstantly('feil');
+    }, 150);
+  }
+  
+  if (wrongKeysInRow >= 5) {
+    if (state.soundValue) {
+      setTimeout(function () {
+        playFingerToUse(key);
+      }, 150);
+    }
   }
 }
 

@@ -404,6 +404,7 @@ document
       state.introPlaying = false;
     } else {
       state.introPlaying = true;
+      document.getElementById('instant-audio').load();
       document.getElementById('instant-audio').play();
     }
     changeButtonSymbol(e.target);
@@ -427,5 +428,6 @@ export {
   currentKeyHighlight,
   blinkCurrentKey,
   changeButtonSymbol,
-  wrongKeyPressedHighlight
+  wrongKeyPressedHighlight,
+  hand,
 };

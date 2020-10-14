@@ -1,12 +1,16 @@
+import { tasks } from './content.js';
 import { state } from './gameState.js';
 import { changeButtonSymbol } from './ui.js';
+import { hand } from './ui.js';
 
 let timeAudioElement = document.getElementById('time-audio');
 let instantAudioElement = document.getElementById('instant-audio');
 
 function checkSoundTimeQueue() {
   if (state.soundTimeQueue.length > 0) {
-    return true;
+    if (timeAudioElement.paused) {
+      return true;
+    }
   }
   return false;
 }
@@ -21,13 +25,24 @@ function playSoundInstantly(soundSource) {
 }
 
 function playSoundFromTimeQueue() {
-  timeAudioElement.src =
-    '../sound/' + state.soundTimeQueue.splice(0, 1) + '.mp3';
+  timeAudioElement.onended = null;
+  let source = state.soundTimeQueue.shift();
+  if (source != undefined) {
+    timeAudioElement.src = '../sound/' + source + '.mp3';
+  }
   if (state.soundTimeQueue.length > 0) {
     timeAudioElement.play();
-    timeAudioElement.addEventListener('onended', playSoundFromTimeQueue());
+    timeAudioElement.onended = function () {
+      playSoundFromTimeQueue();
+    }
   } else {
-    timeAudioElement.play();
+    if (timeAudioElement.paused) {
+      timeAudioElement.play();
+    } else {
+      timeAudioElement.onended = function () {
+        timeAudioElement.play();
+      }
+    }
   }
 }
 
@@ -88,6 +103,30 @@ function playOutroSound(victory) {
   instantAudioElement.play();
 }
 
+function playFingerToUse(key) {
+  let source = '';
+  if (hand.leftPinky.includes(key)) {
+    source = 'leftpinky';
+  } else if (hand.leftRing.includes(key)) {
+    source = 'leftring';
+  } else if (hand.leftLong.includes(key)) {
+    source = 'leftlong';
+  } else if (hand.leftPoint.includes(key)) {
+    source = 'leftpoint';
+  } else if (hand.rightPoint.includes(key)) {
+    source = 'rightpoint';
+  } else if (hand.rightLong.includes(key)) {
+    source = 'rightlong';
+  } else if (hand.rightRing.includes(key)) {
+    source = 'rightring';
+  } else if (hand.rightPinky.includes(key)) {
+    source = 'rightpinky';
+  }
+  addSoundToQueue(source);
+  addSoundToQueue(tasks[state.lection].task[state.currentLetter]);
+  state.lastLetterSoundPLayedAt = state.time;
+}
+
 export {
   checkSoundTimeQueue,
   playSoundFromTimeQueue,
@@ -95,4 +134,5 @@ export {
   playSoundInstantly,
   playIntroSound,
   playOutroSound,
+  playFingerToUse,
 };
