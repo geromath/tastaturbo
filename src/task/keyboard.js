@@ -236,6 +236,7 @@ function handleWrongKeyPress(key) {
         playFingerToUse(key);
       }, 150);
     }
+    wrongKeysInRow = 0;
   }
 }
 
