@@ -29,6 +29,7 @@ import { state } from './gameState.js';
 import { tasks } from './content.js';
 
 import { initAnimation } from './animation.js';
+import { language } from '../../components/settings.js';
 
 function init() {
   initTask(state.signValue);
@@ -93,6 +94,12 @@ function inputUpdate(key) {
     playOutroSound(true);
   }
 
+  const middleSoundBm = ['bm_kom-igjen-halvveis', 'bm_nå-halvveis']
+  const endSoundBm = ['bm_klarer-snart', 'bm_jippi-nå-like-ved-mål']
+  
+  const middleSoundNn = ['nn_kom-igjen-halvvegs', 'nn_no-halvvegs']
+  const endSoundNn = ['nn_klarer-snart', 'nn_jippi-no-like-ved-mål']
+
   // Updates at every time a key in the register is pressed
   if (inputInRegister(key)) {
     // Checks if input is in "safe" key
@@ -100,17 +107,29 @@ function inputUpdate(key) {
       // Checks if input is a correct input or not
       handleCorrectKeyPress();
       if (state.currentLetter === 10) {
-        addSoundToQueue('Nå er vi i gang'); // Igang
+        if (state.langValue == 'Bm') {
+          addSoundToQueue('bm_godt-i-gang');
+        } else {
+          addSoundToQueue('nn_godt-i-gang'); 
+        }
       } else if (
         state.currentLetter ===
         tasks[parseInt(location.hash.slice(1) - 1)].task.length / 2
       ) {
-        addSoundToQueue('Nå er vi halvveis'); // Halvveis
+        if (state.langValue == 'Bm') {
+          addSoundToQueue(middleSoundBm[Math.floor(Math.random(0) * 2) - 1]);
+        } else {
+          addSoundToQueue(middleSoundNn[Math.floor(Math.random(0) * 2) - 1]);
+        }
       } else if (
         state.currentLetter ===
         tasks[parseInt(location.hash.slice(1) - 1)].task.length - 10
       ) {
-        addSoundToQueue('Vi klarer det snart'); // Snart i mål
+        if (state.langValue == 'Bm') {
+          addSoundToQueue(endSoundBm[Math.floor(Math.random(0) * 2) - 1]);
+        } else {
+          addSoundToQueue(endSoundNn[Math.floor(Math.random(0) * 2) - 1]);
+        }
       }
     } else {
       handleWrongKeyPress(key);

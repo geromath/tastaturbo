@@ -31,9 +31,9 @@ function inputInRegister(key) {
 
 function timeSinceLastLetterSound() {
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
-
+  
   if (state.lastLetterSoundPLayedAt - state.time > 3) {
-    if (t.length > 1 && state.soundTimeQueue[state.soundTimeQueue.length - 1] != t[currentWordLetter]) {
+    if (t.length > 1 && state.soundTimeQueue[state.soundTimeQueue.length - 1] != t[state.currentWordLetter]) {
       addSoundToQueue(t[state.currentWordLetter]);
       state.lastLetterSoundPLayedAt = state.time;
     } else {
