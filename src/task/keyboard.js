@@ -201,7 +201,7 @@ function handleCorrectKeyPress() {
       console.log(t[state.currentLetter][state.currentWordLetter] == ' ');
       if (t[state.currentLetter][state.currentWordLetter] == ' ') {
         setTimeout(function () {
-          playSoundInstantly('mellomrom');
+          playSoundInstantly('mellomromstasten');
         }, 300);
       } else {
         setTimeout(function () {

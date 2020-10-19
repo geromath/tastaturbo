@@ -36,6 +36,7 @@ function init() {
   initAnimation();
 
   if (tasks[parseInt(location.hash.slice(1) - 1)].task[0].length > 1) {
+    addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0].trim());
     addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0][0]);
   } else {
     addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0]);

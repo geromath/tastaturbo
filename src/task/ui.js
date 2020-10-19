@@ -1,6 +1,6 @@
 import { state } from './gameState.js';
 import { tasks } from './content.js';
-import { playIntroSound } from './sound.js';
+import { addSoundToQueue, playIntroSound } from './sound.js';
 import { progressAnimation } from './animation.js';
 
 const imgSource = '../img/';
@@ -183,6 +183,9 @@ function updateWordDisplay() {
     return;
   }
   if (state.currentWordLetter === 0) {
+    if (!state.soundTimeQueue.includes(w.trim())) {
+      addSoundToQueue(w.trim());
+    }
     document.getElementById('word-current-letter').innerHTML = w[0];
     document.getElementById('word-next-letter').innerHTML = w.slice(
       1,
