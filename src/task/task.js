@@ -31,15 +31,43 @@ import { tasks } from './content.js';
 import { initAnimation } from './animation.js';
 import { language } from '../../components/settings.js';
 
+let functionalWords = [
+  'comma',
+  'dash',
+  'dot',
+  'exclamation',
+  'question',
+  'quote',
+  'paren-left',
+  'paren-right',
+  'hash',
+
+  'slash',
+  'equals',
+  'star',
+  'colon',
+  'plus',
+];
+
 function init() {
   initTask(state.signValue);
   initAnimation();
 
-  if (tasks[parseInt(location.hash.slice(1) - 1)].task[0].length > 1) {
-    addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0].trim());
-    addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0][0]);
+  let task = tasks[parseInt(location.hash.slice(1) - 1)].task[0];
+
+  if (task.length > 1) {
+    if (functionalWords.includes(task)) {
+      if (state.langValue == 'Bm') {
+        addSoundToQueue(task + '_bm');
+      } else {
+        addSoundToQueue(task + '_nn');
+      }
+    } else {
+      addSoundToQueue(task.trim());
+      addSoundToQueue(tassk[0]);
+    }
   } else {
-    addSoundToQueue(tasks[parseInt(location.hash.slice(1) - 1)].task[0]);
+    addSoundToQueue(task);
   }
 
   if (state.soundValue) {
@@ -66,7 +94,6 @@ function startTask() {
 }
 
 function update() {
-  // Updates every second
   _countdownTime(); // Updates the time (counting down)
   updateTimeDisplay(); // Updates UI
 

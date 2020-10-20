@@ -28,7 +28,9 @@ function playSoundFromTimeQueue() {
   timeAudioElement.onended = null;
   let source = state.soundTimeQueue.shift();
   if (source != undefined) {
-    timeAudioElement.src = '../sound/' + source + '.mp3';
+    if (source !== tasks[state.lection].task[state.currentLetter - 1]) {
+      timeAudioElement.src = '../sound/' + source + '.mp3';
+    }
   }
   if (state.soundTimeQueue.length > 0) {
     timeAudioElement.play();

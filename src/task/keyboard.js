@@ -34,11 +34,23 @@ function timeSinceLastLetterSound() {
   
   if (state.lastLetterSoundPLayedAt - state.time > 3) {
     if (t.length > 1 && state.soundTimeQueue[state.soundTimeQueue.length - 1] != t[state.currentWordLetter]) {
-      addSoundToQueue(t[state.currentWordLetter]);
+      if (functionalWords.includes(t)) {
+        if (state.langValue == 'bm') {
+          addSoundToQueue(t + '_bm');
+        } else {
+          addSoundToQueue(t + '_nn');
+        }
+      } else {
+        addSoundToQueue(t[state.currentWordLetter]);
+      }
       state.lastLetterSoundPLayedAt = state.time;
     } else {
       if (state.soundTimeQueue[state.soundTimeQueue.length - 1] != t) {
-        addSoundToQueue(t);
+        if (Number.isInteger(t) && t >= 10) {
+          addSoundToQueue(t.toString()[state.currentWordLetter]);
+        } else {
+          addSoundToQueue(t);
+        }
         state.lastLetterSoundPLayedAt = state.time;
       }
     }
@@ -198,15 +210,34 @@ function handleCorrectKeyPress() {
   ) {
     updateWordDisplay();
     if (state.soundValue) {
-      console.log(t[state.currentLetter][state.currentWordLetter] == ' ');
       if (t[state.currentLetter][state.currentWordLetter] == ' ') {
         setTimeout(function () {
           playSoundInstantly('mellomromstasten');
         }, 300);
+      } else if (Number.isInteger(t[state.currentLetter])) {
+        if (state.currentWordLetter > 0) {
+          setTimeout(function () {
+            playSoundInstantly(t[state.currentLetter].toString()[state.currentWordLetter]);
+            }, 300);
+        } else {
+          setTimeout(function () {
+            playSoundInstantly(t[state.currentLetter]);
+            }, 300);
+        }
+      } else if (functionalWords.includes(t[state.currentLetter])) {
+        if (state.langValue == 'Bm') {
+          setTimeout(function () {
+            playSoundInstantly(t[state.currentLetter] + '_bm');
+            }, 300);
+        } else {
+          setTimeout(function () {
+            playSoundInstantly(t[state.currentLetter] + '_nn');
+            }, 300);
+        }
       } else {
         setTimeout(function () {
-        playSoundInstantly(t[state.currentLetter][state.currentWordLetter]);
-        }, 300);
+          playSoundInstantly(t[state.currentLetter][state.currentWordLetter]);
+          }, 300);
       }
     }
   } else {
