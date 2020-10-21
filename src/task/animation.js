@@ -80,6 +80,19 @@ function progressAnimation() {
   if (animation.length > 2) {
     // Do a rotation
   }
+
+  let bg = document.getElementById('tt-background');
+  let fig = document.getElementById('tt-figurine');
+  if (state.lection == 9) { // Oppgave 10 - Plukke epler
+    console.log(Math.ceil(currentAnimationStep / 2));
+    if (currentAnimationStep % 2 == 1) {
+      document.getElementById('tt-background').src = '../img/tastaturbo-10-' + Math.ceil(currentAnimationStep / 2) + '.jpg';
+    }
+  } else if (state.lection == 13) { // Oppgave 14 - Puslespill
+
+  } else if (state.lection == 16) { // Oppgave Tall - Fiske
+
+  }
 }
 
 export { initAnimation, progressAnimation };

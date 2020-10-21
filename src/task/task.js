@@ -64,7 +64,7 @@ function init() {
       }
     } else {
       addSoundToQueue(task.trim());
-      addSoundToQueue(tassk[0]);
+      addSoundToQueue(task[0]);
     }
   } else {
     addSoundToQueue(task);

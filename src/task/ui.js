@@ -23,8 +23,16 @@ function initTask(sign) {
     document.getElementById('sign-left-column').classList.add('hidden');
     document.getElementById('blind-left-column').classList.remove('hidden');
   }
-  document.getElementById('start-tt-figurine').src =
-    imgSource + 'tastaturbo-' + taskNumber + '.png';
+  if (state.lection == 5) {
+    document.getElementById('start-tt-figurine').src =
+      imgSource + 'tastaturbo-' + taskNumber + '-start.png';
+  } else if (state.lection == 14) {
+    document.getElementById('start-tt-figurine').src =
+      imgSource + 'tastaturbo-' + taskNumber + '-start.png';
+  } else {
+    document.getElementById('start-tt-figurine').src =
+      imgSource + 'tastaturbo-' + taskNumber + '.png';
+  }
 
   if (state.langValue === 'Nb') {
     document.getElementById('intro-text-blind').innerHTML = task.introNb;
@@ -36,8 +44,12 @@ function initTask(sign) {
 
   document.getElementById('tt-figurine').src =
     imgSource + 'tastaturbo-' + taskNumber + '.png';
-  document.getElementById('tt-background').src =
-    imgSource + 'tastaturbo-bakgrunn-' + taskNumber + '.png';
+  if (state.lection == 9) {
+    document.getElementById('tt-background').src = imgSource + 'tastaturbo-10' + '-0.jpg'
+  } else {
+    document.getElementById('tt-background').src =
+      imgSource + 'tastaturbo-bakgrunn-' + taskNumber + '.png';
+  }
   document.getElementById('end-tt-figurine').src =
     imgSource + 'tastaturbo-' + taskNumber + '.png';
 }
