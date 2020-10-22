@@ -195,6 +195,11 @@ function handleCorrectKeyPress() {
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task;
   state.lastLetterSoundPLayedAt = state.time;
 
+  // * Clear the sound queue of letters
+  if (state.soundTimeQueue.length > 0) {
+    state.soundTimeQueue = [];
+  }
+
   if (state.currentLetter === t.length) {
     state.hasWon = true;
     return;
