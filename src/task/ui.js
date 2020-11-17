@@ -145,9 +145,11 @@ let functionalWords = [
 function updateWordDisplay() {
   cleanSlate();
   document.getElementById('word-current-letter').classList.remove('hidden');
+  document.getElementById('word-current-letter').style.boxShadow = '0 5px #18404c';
 
   let w = tasks[parseInt(location.hash.slice(1)) - 1].task[state.currentLetter];
   if (functionalWords.includes(w)) {
+    document.getElementById('word-current-letter').style.boxShadow = '0 0 0 #00000000';
     if (w === 'comma') {
       document.getElementById('word-current-letter').innerHTML = ',';
     } else if (w === 'dash') {
@@ -180,8 +182,13 @@ function updateWordDisplay() {
     return;
   }
   if (Number.isInteger(w)) {
+    document.getElementById('word-current-letter').style.boxShadow = '0 0 0 #00000000';
     if (w < 10) {
-      document.getElementById('word-current-letter').innerHTML = w;
+      if (leftKeys.includes(w)) {
+        document.getElementById('left-letter').innerHTML = w;
+      } else {
+        document.getElementById('right-letter').innerHTML = w;
+      }
     } else {
       let temp = w.toString();
       if (state.currentWordLetter === 0) {

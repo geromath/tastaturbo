@@ -25,10 +25,22 @@ function playSoundInstantly(soundSource) {
 }
 
 function playSoundFromTimeQueue() {
+  console.log(state.soundTimeQueue);
+
   timeAudioElement.onended = null;
+
   let source = state.soundTimeQueue.shift();
+
   if (source != undefined) {
-    if (source !== tasks[state.lection].task[state.currentLetter - 1]) {
+    for (let i = 0; i < state.soundTimeQueue.length; i++) {
+      console.log(source, state.soundTimeQueue[0]);
+      if (source === state.soundTimeQueue[0]) {
+        state.soundTimeQueue.shift();
+      } else {
+        break;
+      }
+    }
+    if (source != tasks[state.lection].task[state.currentLetter - 1]) {
       timeAudioElement.src = '../sound/' + source + '.mp3';
     }
   }
@@ -105,30 +117,6 @@ function playOutroSound(victory) {
   instantAudioElement.play();
 }
 
-function playFingerToUse(key) {
-  let source = '';
-  if (hand.leftPinky.includes(key)) {
-    source = 'leftpinky';
-  } else if (hand.leftRing.includes(key)) {
-    source = 'leftring';
-  } else if (hand.leftLong.includes(key)) {
-    source = 'leftlong';
-  } else if (hand.leftPoint.includes(key)) {
-    source = 'leftpoint';
-  } else if (hand.rightPoint.includes(key)) {
-    source = 'rightpoint';
-  } else if (hand.rightLong.includes(key)) {
-    source = 'rightlong';
-  } else if (hand.rightRing.includes(key)) {
-    source = 'rightring';
-  } else if (hand.rightPinky.includes(key)) {
-    source = 'rightpinky';
-  }
-  addSoundToQueue(source);
-  addSoundToQueue(tasks[state.lection].task[state.currentLetter]);
-  state.lastLetterSoundPLayedAt = state.time;
-}
-
 export {
   checkSoundTimeQueue,
   playSoundFromTimeQueue,
@@ -136,5 +124,4 @@ export {
   playSoundInstantly,
   playIntroSound,
   playOutroSound,
-  playFingerToUse,
 };

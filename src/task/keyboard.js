@@ -7,7 +7,7 @@ import {
   blinkCurrentKey,
   wrongKeyPressedHighlight,
 } from './ui.js';
-import { addSoundToQueue, playSoundInstantly, playFingerToUse } from './sound.js';
+import { addSoundToQueue, playSoundInstantly } from './sound.js';
 import { progressAnimation } from './animation.js';
 
 const registry = [];
@@ -195,9 +195,17 @@ function handleCorrectKeyPress() {
   let t = tasks[parseInt(location.hash.slice(1)) - 1].task;
   state.lastLetterSoundPLayedAt = state.time;
 
-  // * Clear the sound queue of letters
+  setTimeout(function () {
+    document.getElementById('time-audio').pause();
+    document.getElementById('instant-audio').pause();
+  }, 500);
+
   if (state.soundTimeQueue.length > 0) {
-    state.soundTimeQueue = [];
+    for (let i = 0; i < state.soundTimeQueue.length; i++) {
+      if (state.soundTimeQueue[i] != undefined && state.soundTimeQueue[i].length === 1) {
+        state.soundTimeQueue.splice(i, 1);
+      }
+    }
   }
 
   if (state.currentLetter === t.length) {
@@ -214,35 +222,36 @@ function handleCorrectKeyPress() {
     Number.isInteger(t[state.currentLetter])
   ) {
     updateWordDisplay();
+
     if (state.soundValue) {
       if (t[state.currentLetter][state.currentWordLetter] == ' ') {
         setTimeout(function () {
           playSoundInstantly('mellomromstasten');
-        }, 300);
+        }, 400);
       } else if (Number.isInteger(t[state.currentLetter])) {
         if (state.currentWordLetter > 0) {
           setTimeout(function () {
             playSoundInstantly(t[state.currentLetter].toString()[state.currentWordLetter]);
-            }, 300);
+            }, 600);
         } else {
           setTimeout(function () {
             playSoundInstantly(t[state.currentLetter]);
-            }, 300);
+            }, 600);
         }
       } else if (functionalWords.includes(t[state.currentLetter])) {
         if (state.langValue == 'Bm') {
           setTimeout(function () {
             playSoundInstantly(t[state.currentLetter] + '_bm');
-            }, 300);
+            }, 400);
         } else {
           setTimeout(function () {
             playSoundInstantly(t[state.currentLetter] + '_nn');
-            }, 300);
+            }, 400);
         }
       } else {
         setTimeout(function () {
-          playSoundInstantly(t[state.currentLetter][state.currentWordLetter]);
-          }, 300);
+          addSoundToQueue(t[state.currentLetter][state.currentWordLetter]);
+          }, 400);
       }
     }
   } else {
@@ -250,7 +259,7 @@ function handleCorrectKeyPress() {
     if (state.soundValue) {
       setTimeout(function () {
         playSoundInstantly(t[state.currentLetter]);
-      }, 300);
+      }, 600);
     }
   }
 }
@@ -264,15 +273,6 @@ function handleWrongKeyPress(key) {
     setTimeout(function () {
       playSoundInstantly('feil');
     }, 150);
-  }
-  
-  if (wrongKeysInRow >= 5) {
-    if (state.soundValue) {
-      setTimeout(function () {
-        playFingerToUse(key);
-      }, 150);
-    }
-    wrongKeysInRow = 0;
   }
 }
 

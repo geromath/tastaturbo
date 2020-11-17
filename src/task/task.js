@@ -105,7 +105,8 @@ function update() {
     timeSinceLastLetterSound();
 
     if (state.time % (state.startTime / 4) === 0) {
-      addSoundToQueue('beep');
+      document.getElementById('timed-audio').src = '../sound/beep.mp3';
+      document.getElementById('timed-audio').play();
     }
   }
 
@@ -134,30 +135,35 @@ function inputUpdate(key) {
     if (checkInput(key)) {
       // Checks if input is a correct input or not
       handleCorrectKeyPress();
+      
+      let timedAudio = document.getElementById('progression-audio');
       if (state.currentLetter === 10) {
         if (state.langValue == 'Bm') {
-          addSoundToQueue('bm_godt-i-gang');
+          timedAudio.src = '../sound/bm_godt-i-gang.mp3';
         } else {
-          addSoundToQueue('nn_godt-i-gang'); 
+          timedAudio.src = '../sound/nn_godt-i-gang.mp3'; 
         }
+        timedAudio.play();
       } else if (
         state.currentLetter ===
         tasks[parseInt(location.hash.slice(1) - 1)].task.length / 2
       ) {
         if (state.langValue == 'Bm') {
-          addSoundToQueue(middleSoundBm[Math.floor(Math.random(0) * 2) - 1]);
+          timedAudio.src = '../sound/' + middleSoundBm[Math.floor(Math.random(0) * 2) - 1] + '.mp3';
         } else {
-          addSoundToQueue(middleSoundNn[Math.floor(Math.random(0) * 2) - 1]);
+          timedAudio.src = '../sound/' + middleSoundNn[Math.floor(Math.random(0) * 2) - 1] + '.mp3';
         }
+        timedAudio.play();
       } else if (
         state.currentLetter ===
         tasks[parseInt(location.hash.slice(1) - 1)].task.length - 10
       ) {
         if (state.langValue == 'Bm') {
-          addSoundToQueue(endSoundBm[Math.floor(Math.random(0) * 2) - 1]);
+          timedAudio.src = '../sound/' + endSoundBm[Math.floor(Math.random(0) * 2) - 1] + '.mp3';
         } else {
-          addSoundToQueue(endSoundNn[Math.floor(Math.random(0) * 2) - 1]);
+          timedAudio.src = '../sound/' + endSoundNn[Math.floor(Math.random(0) * 2) - 1] + '.mp3';
         }
+        timedAudio.play();
       }
     } else {
       handleWrongKeyPress(key);

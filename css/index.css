@@ -312,6 +312,16 @@ input[type='radio']:nth-child(2):checked::before {
   font-weight: bold;
 }
 
+footer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  padding: 4rem 30%;
+  background-color: #18404c;
+  color: white;
+  font-size: x-large;
+}
+
 /* ######## MEDIA QUERIES ######## */
 @media screen and (max-width: 768px) {
   .navigation {
